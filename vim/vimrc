@@ -1,0 +1,121 @@
+"=========== PLUGINS  ===================
+call plug#begin('~/.vim/plugged')
+
+"Javascript
+Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern' }
+Plug 'mxw/vim-jsx'
+Plug 'pangloss/vim-javascript'
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+"Rails
+Plug 'tpope/vim-rails'
+
+"Prettier
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+
+"IntelliSense
+Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+
+"Code linting 
+ Plug 'w0rp/ale'
+
+"CSS/LESS/SCSS
+Plug 'hail2u/vim-css3-syntax'
+Plug 'ap/vim-css-color'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'groenewege/vim-less'
+Plug 'othree/csscomplete.vim'
+
+"Themes (Fancy Shit)
+Plug 'joshdick/onedark.vim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'srcery-colors/srcery-vim'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+
+"Code Edit Plugins
+Plug 'junegunn/vim-easy-align'
+
+"MiscPlugins
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+
+call plug#end()
+"=========== END OF PLUGINS  ============
+
+let mapleader=","
+"=========== THEME AND EDITOR SETTINGS ===================
+syntax enable
+set termguicolors
+set background=dark
+colorscheme onedark
+let g:airline_theme = 'onedark'
+let g:airline#extensions#tabline#enabled = 1
+
+"------- theme specific settings
+let g:onedark_terminal_italics=1
+
+"------- editor settings
+set cursorline
+set colorcolumn=100
+set nu relativenumber
+set noerrorbells
+nnoremap <CR> :noh<CR><CR>
+set breakindent
+set autoindent
+set tabstop=2 shiftwidth=2 expandtab softtabstop=2
+set nowritebackup
+set noswapfile
+set nobackup
+
+"------- Prettier config
+let g:prettier#exec_cmd_async = 1
+
+"------- Ale linter config
+let g:ale_fixers = {
+ \ 'javascript': ['eslint']
+ \ }
+
+let g:ale_sign_error = '❌'
+let g:ale_sign_warning = '⚠️'
+
+let g:ale_fix_on_save = 1
+
+"=========== NAVIGATION CONFIGURATION ===================
+
+"------- navigate through buffers
+set hidden
+nnoremap <C-H> :bnext<CR>
+nnoremap <C-L> :bprev<CR>
+nnoremap <C-D><C-D> :bd<CR>
+
+"------- COC config :)
+set shortmess+=c
+set signcolumn=yes
+
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+inoremap <silent><expr> <c-space> coc#refresh()
+
+
+"-------- EasyAlign plugin configuration
+xmap ga <Plug>(EasyAlign) "Start align in visual mode
+nmap ga <Plug>(EasyAlign) "Start align for motion/text object
+
+"-------- NerdTree Config
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+nmap <Leader>f :NERDTreeToggle<Enter>
+nmap <silent><Leader>v :NERDTreeFind<CR>
+let NERDTreeQuitOnOpen = 1
+let NERDTreeAutoDeleteBuffer = 1
+let NERDTreeDirArrows = 1
+let NERDTreeMinimalUI = 1
+
