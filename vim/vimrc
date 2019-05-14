@@ -5,7 +5,6 @@ call plug#begin('~/.vim/plugged')
 Plug 'ternjs/tern_for_vim', { 'do': 'npm install -g tern' }
 Plug 'mxw/vim-jsx'
 Plug 'pangloss/vim-javascript'
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 "Rails
 Plug 'tpope/vim-rails'
