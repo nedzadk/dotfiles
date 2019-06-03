@@ -2,7 +2,8 @@
 call plug#begin('~/.vim/plugged')
 
 "Javascript
-Plug 'mxw/vim-jsx'
+"Plug 'mxw/vim-jsx'
+Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'pangloss/vim-javascript'
 
 "Rails
@@ -25,6 +26,7 @@ Plug 'groenewege/vim-less'
 Plug 'othree/csscomplete.vim'
 
 "Themes (Fancy Shit)
+Plug 'NLKNguyen/papercolor-theme'
 Plug 'joshdick/onedark.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'srcery-colors/srcery-vim'
@@ -45,8 +47,8 @@ let mapleader=","
 "=========== THEME AND EDITOR SETTINGS ===================
 syntax enable
 set termguicolors
-set background=dark
-colorscheme onedark
+set background=light
+colorscheme PaperColor
 let g:airline_theme = 'onedark'
 let g:airline#extensions#tabline#enabled = 1
 
