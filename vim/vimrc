@@ -47,9 +47,9 @@ let mapleader=","
 "=========== THEME AND EDITOR SETTINGS ===================
 syntax enable
 set termguicolors
-set background=light
-colorscheme PaperColor
-let g:airline_theme = 'solarized'
+set background=dark
+colorscheme onedark
+let g:airline_theme = 'onedark'
 let g:airline#extensions#tabline#enabled = 1
 
 "------- theme specific settings
