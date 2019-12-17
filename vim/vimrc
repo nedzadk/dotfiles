@@ -13,7 +13,7 @@ Plug 'tpope/vim-rails'
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 
 "IntelliSense
-Plug 'neoclide/coc.nvim', {'tag': '*', 'do': './install.sh'}
+Plug 'neoclide/coc.nvim', { 'branch': 'release' }
 
 "Code linting 
  Plug 'w0rp/ale'
