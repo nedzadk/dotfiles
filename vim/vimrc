@@ -28,7 +28,6 @@ Plug 'othree/csscomplete.vim'
 "Themes (Fancy Shit)
 Plug 'NLKNguyen/papercolor-theme'
 Plug 'joshdick/onedark.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'srcery-colors/srcery-vim'
 Plug 'kien/rainbow_parentheses.vim'
 Plug 'vim-airline/vim-airline'
