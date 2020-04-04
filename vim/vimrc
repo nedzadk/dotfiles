@@ -1,115 +1,144 @@
-"=========== PLUGINS  ===================
-call plug#begin('~/.vim/plugged')
-
-"Javascript
-"Plug 'mxw/vim-jsx'
-Plug 'MaxMEllon/vim-jsx-pretty'
-Plug 'pangloss/vim-javascript'
-
-"Rails
-Plug 'tpope/vim-rails'
-
-"Prettier
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-
-"IntelliSense
-Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-
-"Code linting 
- Plug 'w0rp/ale'
-
-"CSS/LESS/SCSS
-Plug 'hail2u/vim-css3-syntax'
-Plug 'ap/vim-css-color'
-Plug 'cakebaker/scss-syntax.vim'
-Plug 'groenewege/vim-less'
-Plug 'othree/csscomplete.vim'
-
-"Themes (Fancy Shit)
-Plug 'NLKNguyen/papercolor-theme'
-Plug 'joshdick/onedark.vim'
-Plug 'srcery-colors/srcery-vim'
-Plug 'kien/rainbow_parentheses.vim'
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-
-"Code Edit Plugins
-Plug 'junegunn/vim-easy-align'
-
-"MiscPlugins
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-
+call plug#begin()
+  Plug 'ntpeters/vim-better-whitespace'
+  Plug 'easymotion/vim-easymotion'
+  "FZF
+  Plug 'junegunn/fzf', { 'do': './install --bin' }
+  Plug 'junegunn/fzf.vim'
+  "Git
+  Plug 'tpope/vim-fugitive'
+  "Coc
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  Plug 'Shougo/denite.nvim'
+  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+  " Coloring
+  Plug 'sheerun/vim-polyglot'
+  Plug 'joshdick/onedark.vim'
+  Plug 'dracula/vim'
+  Plug 'ayu-theme/ayu-vim'
+  Plug 'franbach/miramare'
+  Plug 'drewtempelmeyer/palenight.vim'
+  " Statusline
+  Plug 'itchyny/lightline.vim'
+  Plug 'josa42/vim-lightline-coc'
+  " Fancy Stuff
+  Plug 'mhinz/vim-startify'
 call plug#end()
-"=========== END OF PLUGINS  ============
 
-let mapleader=","
-"=========== THEME AND EDITOR SETTINGS ===================
-syntax enable
+let g:coc_global_extensions = [
+      \'coc-tslint-plugin',
+      \'coc-tsserver',
+      \'coc-emmet',
+      \'coc-css',
+      \'coc-html',
+      \'coc-json',
+      \'coc-yank',
+      \'coc-prettier',
+      \'coc-git',
+      \'coc-lists']
+
+filetype plugin indent on
+scriptencoding utf-8
+source ~/.config/nvim/plugins.vim
+
+" Coloscheme
+syntax on
+set ruler
+set t_Co=256
 set termguicolors
 set background=dark
-colorscheme onedark
-let g:airline_theme = 'onedark'
-let g:airline#extensions#tabline#enabled = 1
+"let ayucolor="dark"   " for dark version of theme
+let g:palenight_terminal_italics=1
+colorscheme palenight
+"TypeScript support
+au BufNewFile,BufRead *.js setlocal filetype=javascript
+au BufNewFile,BufRead *.ts setlocal filetype=typescript
+au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
+au BufNewFile,BufRead *.jsx setlocal filetype=typescript.tsx
 
-"------- theme specific settings
-let g:onedark_terminal_italics=1
 
-"------- editor settings
-set cursorline
-set colorcolumn=100
-set nu relativenumber
-set noerrorbells
-nnoremap <CR> :noh<CR><CR>
-set breakindent
-set autoindent
-set tabstop=2 shiftwidth=2 expandtab softtabstop=2
-set nowritebackup
-set noswapfile
-set nobackup
+"File encoding
+set encoding=utf-8
+set fileencoding=utf-8
+set fileencodings=utf-8
+set bomb
+set binary
 
-"------- Prettier config
-let g:prettier#exec_cmd_async = 1
+"FZF config
+if has('nvim') && !exists('g:fzf_layout')
+  autocmd! FileType fzf
+  autocmd  FileType fzf set laststatus=0 noshowmode noruler
+    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
+endif
 
-"------- Ale linter config
-let g:ale_fixers = {
- \ 'javascript': ['eslint']
- \ }
 
-let g:ale_sign_error = '❌'
-let g:ale_sign_warning = '⚠️'
+let g:lightline = {
+      \ 'colorscheme': 'palenight',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 
-let g:ale_fix_on_save = 1
+"CoC config
+inoremap <silent><expr> <c-space> coc#refresh()
+nmap <silent>lf  <Plug>(coc-fix-current)
+command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
-"=========== NAVIGATION CONFIGURATION ===================
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
-"------- navigate through buffers
+nmap <leader>rn <Plug>(coc-rename)
+
+nnoremap <C-F> :GFiles<CR>
+nnoremap <C-G> :Rg<CR>
+nnoremap <C-B> :Buffers<CR>
+
+
+let g:mapleader=','
+set nonumber
+set noshowcmd
+set clipboard=unnamed
+
+" Tab and space config
+set expandtab
+set softtabstop=2
+set shiftwidth=2
+set nowrap
+set nocursorline
+set noruler
+set cmdheight=1
+
+set shortmess+=c
+
+"navigate through buffers
 set hidden
 nnoremap <C-H> :bnext<CR>
 nnoremap <C-L> :bprev<CR>
-nnoremap <C-D><C-D> :bd<CR>
-
-"------- COC config :)
-set shortmess+=c
-set signcolumn=yes
-
-inoremap <silent><expr> <TAB>
-      \ pumvisible() ? "\<C-n>" :
-      \ <SID>check_back_space() ? "\<TAB>" :
-      \ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-function! s:check_back_space() abort
-  let col = col('.') - 1
-  return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
+nnoremap <C-D><C-D> :bd!<CR>
 
 
-"-------- EasyAlign plugin configuration
-xmap ga <Plug>(EasyAlign) "Start align in visual mode
-nmap ga <Plug>(EasyAlign) "Start align for motion/text object
+"Search config
+set hlsearch
+set incsearch
+set ignorecase
+set smartcase
+nnoremap <CR> :noh<CR><CR>
 
-"-------- NerdTree Config
+"swp
+set nobackup
+set noswapfile
+set fileformats=unix,dos,mac
+set showcmd
+set shell=/bin/zsh
+
+"NERDTree
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 nmap <Leader>f :NERDTreeToggle<Enter>
 nmap <silent><Leader>v :NERDTreeFind<CR>
@@ -118,3 +147,4 @@ let NERDTreeAutoDeleteBuffer = 1
 let NERDTreeDirArrows = 1
 let NERDTreeMinimalUI = 1
 
+set number
