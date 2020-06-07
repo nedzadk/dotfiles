@@ -1,41 +1,3 @@
-call plug#begin()
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'easymotion/vim-easymotion'
-  "FZF
-  Plug 'junegunn/fzf', { 'do': './install --bin' }
-  Plug 'junegunn/fzf.vim'
-  "Git
-  Plug 'tpope/vim-fugitive'
-  "Coc
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'Shougo/denite.nvim'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-  " Coloring
-  Plug 'sheerun/vim-polyglot'
-  Plug 'joshdick/onedark.vim'
-  Plug 'dracula/vim'
-  Plug 'ayu-theme/ayu-vim'
-  Plug 'franbach/miramare'
-  Plug 'drewtempelmeyer/palenight.vim'
-  " Statusline
-  Plug 'itchyny/lightline.vim'
-  Plug 'josa42/vim-lightline-coc'
-  " Fancy Stuff
-  Plug 'mhinz/vim-startify'
-call plug#end()
-
-let g:coc_global_extensions = [
-      \'coc-tslint-plugin',
-      \'coc-tsserver',
-      \'coc-emmet',
-      \'coc-css',
-      \'coc-html',
-      \'coc-json',
-      \'coc-yank',
-      \'coc-prettier',
-      \'coc-git',
-      \'coc-lists']
-
 filetype plugin indent on
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
@@ -48,7 +10,7 @@ set termguicolors
 set background=dark
 "let ayucolor="dark"   " for dark version of theme
 let g:palenight_terminal_italics=1
-colorscheme palenight
+colorscheme onedark
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -72,7 +34,7 @@ endif
 
 
 let g:lightline = {
-      \ 'colorscheme': 'palenight',
+      \ 'colorscheme': 'onedark',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
