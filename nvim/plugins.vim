@@ -13,6 +13,7 @@ call plug#begin()
   " Coloring
   Plug 'sheerun/vim-polyglot'
   Plug 'joshdick/onedark.vim'
+  Plug 'rakr/vim-one'
   " Statusline
   Plug 'itchyny/lightline.vim'
   Plug 'josa42/vim-lightline-coc'

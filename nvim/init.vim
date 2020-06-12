@@ -7,10 +7,10 @@ syntax on
 set ruler
 set t_Co=256
 set termguicolors
-set background=dark
+set background=light
 "let ayucolor="dark"   " for dark version of theme
 let g:palenight_terminal_italics=1
-colorscheme onedark
+colorscheme one
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -34,7 +34,7 @@ endif
 
 
 let g:lightline = {
-      \ 'colorscheme': 'onedark',
+      \ 'colorscheme': 'one',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
