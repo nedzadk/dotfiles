@@ -42,20 +42,20 @@ command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " GoTo code navigation.
-nmap <Leader>gd <Plug>(coc-definition)
-nmap <Leader>gy <Plug>(coc-type-definition)
-nmap <Leader>gi <Plug>(coc-implementation)
-nmap <Leader>rr <Plug>(coc-rename)
-nmap <Leader>gr <Plug>(coc-deferences)
-nnoremap <Leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nmap <leader>gd <Plug>(coc-definition)
+nmap <leader>gy <Plug>(coc-type-definition)
+nmap <leader>gi <Plug>(coc-implementation)
+nmap <leader>rr <Plug>(coc-rename)
+nmap <leader>gr <Plug>(coc-deferences)
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-G> :Rg<SPACE>
 nnoremap <C-B> :Buffers<CR>
-nnoremap <Leader>pf :Files<CR>
-nnoremap <Leader>ps :Rg<CR>
+nnoremap <leader>pf :Files<CR>
+nnoremap <leader>ps :Rg<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader><CR> :source $MYVIMRC<CR>
+nnoremap <leader><CR> :source $MYVIMRC<CR>
 
 if executable('rg')
     let g:rg_derive_root='true'
