@@ -6,10 +6,9 @@ source ~/.config/nvim/plugins.vim
 syntax on
 set ruler
 set t_Co=256
+set termguicolors
 colorscheme one
 set background=dark
-set termguicolors
-let g:palenight_terminal_italics=1
 
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
@@ -25,37 +24,38 @@ set bomb
 set binary
 
 "FZF config
-if has('nvim') && !exists('g:fzf_layout')
-  autocmd! FileType fzf
-  autocmd  FileType fzf set laststatus=0 noshowmode noruler
-    \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
-endif
+let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
+let $FZF_DEFAULT_OPTS='--reverse'
 
 "Airline configuration
 let g:airline#extensions#tabline#enabled = 1
 
 "CoC config
-inoremap <silent><expr> <c-space> coc#refresh()
 nmap <silent>lf  <Plug>(coc-fix-current)
 command! -nargs=0 Format :call CocAction('format')
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
 
 " GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <leader> rr <Plug>(coc-rename)
-nmap <silent> gr <Plug>(coc-deferences)
-nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
+nmap <Leader>gd <Plug>(coc-definition)
+nmap <Leader>gy <Plug>(coc-type-definition)
+nmap <Leader>gi <Plug>(coc-implementation)
+nmap <Leader>rr <Plug>(coc-rename)
+nmap <Leader>gr <Plug>(coc-deferences)
+nnoremap <Leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <C-G> :Rg<CR>
 nnoremap <C-B> :Buffers<CR>
+nnoremap <Leader>pf :Files<CR>
+nnoremap <Leader>ps :Rg<CR>
+nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+nnoremap <Leader><CR> :so $HOME/.config/nvim/init.vim<CR>
 
 
-let g:mapleader=','
+let mapleader=" "
 set noshowcmd
 set clipboard=unnamed
+set guicursor=
 
 " Tab and space config
 set expandtab
@@ -65,6 +65,7 @@ set nowrap
 set nocursorline
 set noruler
 set cmdheight=1
+set smartindent
 
 set shortmess+=c
 
@@ -89,13 +90,25 @@ set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/zsh
 
-"NERDTree
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-nmap <Leader>f :NERDTreeToggle<Enter>
-nmap <silent><Leader>v :NERDTreeFind<CR>
-let NERDTreeQuitOnOpen = 1
-let NERDTreeAutoDeleteBuffer = 1
-let NERDTreeDirArrows = 1
-let NERDTreeMinimalUI = 1
-
 set number
+set relativenumber
+set cmdheight=2
+set colorcolumn=80
+let loaded_matchparen = 1
+
+" --- vim go (polyglot) settings.
+let g:go_highlight_build_constraints = 1
+let g:go_highlight_extra_types = 1
+let g:go_highlight_fields = 1
+let g:go_highlight_functions = 1
+let g:go_highlight_methods = 1
+let g:go_highlight_operators = 1
+let g:go_highlight_structs = 1
+let g:go_highlight_types = 1
+let g:go_highlight_function_parameters = 1
+let g:go_highlight_function_calls = 1
+let g:go_highlight_generate_tags = 1
+let g:go_highlight_format_strings = 1
+let g:go_highlight_variable_declarations = 1
+let g:go_auto_sameids = 1
+
