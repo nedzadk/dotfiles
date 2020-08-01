@@ -6,10 +6,10 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   "Git
   Plug 'tpope/vim-fugitive'
-  " Coloring
+  " Polyglot
   Plug 'sheerun/vim-polyglot'
-  Plug 'joshdick/onedark.vim'
-  Plug 'rakr/vim-one'
+  "Coloring
+  Plug 'gruvbox-community/gruvbox'
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
   " Statusline

@@ -7,7 +7,13 @@ syntax on
 set ruler
 set t_Co=256
 set termguicolors
-colorscheme one
+let g:gruvbox_contrast_dark = 'hard'
+if exists('+termguicolors')
+    let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+    let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif
+let g:gruvbox_invert_selection = 0
+colorscheme gruvbox
 set background=dark
 
 "TypeScript support
@@ -44,12 +50,16 @@ nmap <Leader>gr <Plug>(coc-deferences)
 nnoremap <Leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 nnoremap <C-p> :GFiles<CR>
-nnoremap <C-G> :Rg<CR>
+nnoremap <C-G> :Rg<SPACE>
 nnoremap <C-B> :Buffers<CR>
 nnoremap <Leader>pf :Files<CR>
 nnoremap <Leader>ps :Rg<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
-nnoremap <Leader><CR> :so $HOME/.config/nvim/init.vim<CR>
+nnoremap <Leader><CR> :source $MYVIMRC<CR>
+
+if executable('rg')
+    let g:rg_derive_root='true'
+endif
 
 
 let mapleader=" "
@@ -81,7 +91,6 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
-nnoremap <CR> :noh<CR><CR>
 
 "swp
 set nobackup
@@ -95,6 +104,10 @@ set relativenumber
 set cmdheight=2
 set colorcolumn=80
 let loaded_matchparen = 1
+nnoremap <leader>h :wincmd h<CR>
+nnoremap <leader>j :wincmd j<CR>
+nnoremap <leader>k :wincmd k<CR>
+nnoremap <leader>l :wincmd l<CR>
 
 " --- vim go (polyglot) settings.
 let g:go_highlight_build_constraints = 1
