@@ -92,6 +92,14 @@ set hlsearch
 set incsearch
 set ignorecase
 set smartcase
+set nohlsearch
+
+"Misc config
+set noerrorbells
+set scrolloff=8
+set noshowmode
+set updatetime=50
+set shortmess+=c
 
 "swp
 set nobackup
@@ -104,11 +112,20 @@ set number
 set relativenumber
 set cmdheight=2
 set colorcolumn=80
+"highlight ColorColumn ctermbg=0 guibg=grey
 let loaded_matchparen = 1
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
+"Vim TODO
+nmap <leader>tu <Plug>BujoChecknormal
+nmap <leader>th <Plug>BujoAddnormal
+let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
+"Vim Fugitive
+nmap <leader>gh :diffget //3<CR>
+nmap <leader>gu :diffget //2<CR>
+nmap <leader>gs :G<CR>
 
 " --- vim go (polyglot) settings.
 let g:go_highlight_build_constraints = 1

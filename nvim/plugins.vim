@@ -12,6 +12,7 @@ call plug#begin()
   Plug 'gruvbox-community/gruvbox'
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
+  Plug 'vuciv/vim-bujo'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
