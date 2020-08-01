@@ -6,17 +6,16 @@ source ~/.config/nvim/plugins.vim
 syntax on
 set ruler
 set t_Co=256
-set termguicolors
-set background=light
-"let ayucolor="dark"   " for dark version of theme
-let g:palenight_terminal_italics=1
 colorscheme one
+set background=dark
+set termguicolors
+let g:palenight_terminal_italics=1
+
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 au BufNewFile,BufRead *.jsx setlocal filetype=typescript.tsx
-
 
 "File encoding
 set encoding=utf-8
@@ -32,17 +31,8 @@ if has('nvim') && !exists('g:fzf_layout')
     \| autocmd BufLeave <buffer> set laststatus=2 showmode ruler
 endif
 
-
-let g:lightline = {
-      \ 'colorscheme': 'one',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \ },
-      \ }
+"Airline configuration
+let g:airline#extensions#tabline#enabled = 1
 
 "CoC config
 inoremap <silent><expr> <c-space> coc#refresh()
@@ -54,17 +44,16 @@ command! -nargs=0 Prettier :CocCommand prettier.formatFile
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nmap <leader> rr <Plug>(coc-rename)
+nmap <silent> gr <Plug>(coc-deferences)
+nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
-nmap <leader>rn <Plug>(coc-rename)
-
-nnoremap <C-F> :GFiles<CR>
+nnoremap <C-p> :GFiles<CR>
 nnoremap <C-G> :Rg<CR>
 nnoremap <C-B> :Buffers<CR>
 
 
 let g:mapleader=','
-set nonumber
 set noshowcmd
 set clipboard=unnamed
 

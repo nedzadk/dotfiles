@@ -1,24 +1,20 @@
 call plug#begin()
-  Plug 'ntpeters/vim-better-whitespace'
-  Plug 'easymotion/vim-easymotion'
+  "Coc
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
   "FZF
-  Plug 'junegunn/fzf', { 'do': './install --bin' }
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   "Git
   Plug 'tpope/vim-fugitive'
-  "Coc
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-  Plug 'Shougo/denite.nvim'
-  Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
   " Coloring
   Plug 'sheerun/vim-polyglot'
   Plug 'joshdick/onedark.vim'
   Plug 'rakr/vim-one'
+  "Misc
+  Plug 'ntpeters/vim-better-whitespace'
   " Statusline
-  Plug 'itchyny/lightline.vim'
-  Plug 'josa42/vim-lightline-coc'
-  " Fancy Stuff
-  Plug 'mhinz/vim-startify'
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 call plug#end()
 
 let g:coc_global_extensions = [
