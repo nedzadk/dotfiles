@@ -1,6 +1,8 @@
 filetype plugin indent on
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
+let mapleader=" "
+let g:mapleader=" "
 
 " Coloscheme
 syntax on
@@ -62,7 +64,6 @@ if executable('rg')
 endif
 
 
-let mapleader=" "
 set noshowcmd
 set clipboard=unnamed
 set guicursor=
