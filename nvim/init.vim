@@ -26,6 +26,10 @@ au BufNewFile,BufRead *.jsx setlocal filetype=typescript.tsx
 
 let loaded_matchparen = 1
 
+let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 25
+
 "File encoding
 set encoding=utf-8
 set fileencoding=utf-8
@@ -133,3 +137,5 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 "Reload/Edit vim config
 nnoremap <leader><CR> :source $MYVIMRC<CR>
 nnoremap <leader>ed :e $MYVIMRC<CR>
+"Close buffer
+nnoremap <leader>q :bdelete<CR>
