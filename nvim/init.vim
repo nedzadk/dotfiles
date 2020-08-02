@@ -57,7 +57,10 @@ nnoremap <C-B> :Buffers<CR>
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>ps :Rg<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
+"Reload vim config
 nnoremap <leader><CR> :source $MYVIMRC<CR>
+"Edit vim config
+nnoremap <leader>ed :e $MYVIMRC<CR>
 
 if executable('rg')
     let g:rg_derive_root='true'
@@ -70,8 +73,9 @@ set guicursor=
 
 " Tab and space config
 set expandtab
-set softtabstop=2
-set shiftwidth=2
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
 set nowrap
 set nocursorline
 set noruler
@@ -84,8 +88,6 @@ set shortmess+=c
 set hidden
 nnoremap <C-H> :bnext<CR>
 nnoremap <C-L> :bprev<CR>
-nnoremap <C-D><C-D> :bd!<CR>
-
 
 "Search config
 set hlsearch
