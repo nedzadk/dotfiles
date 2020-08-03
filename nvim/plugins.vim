@@ -10,6 +10,10 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   "Coloring
   Plug 'gruvbox-community/gruvbox'
+  "Nerdtree
+  Plug 'preservim/nerdtree'
+  "File icons
+  Plug 'ryanoasis/vim-devicons'
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'vuciv/vim-bujo'

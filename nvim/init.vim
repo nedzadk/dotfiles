@@ -18,6 +18,12 @@ let g:gruvbox_invert_selection = 0
 colorscheme gruvbox
 set background=dark
 
+"NerdTree config
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+
+
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
 au BufNewFile,BufRead *.ts setlocal filetype=typescript
@@ -59,9 +65,9 @@ set guicursor=
 
 " Indent config
 set expandtab
-set tabstop=4
-set softtabstop=4
-set shiftwidth=4
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
 set nowrap
 set nocursorline
 set noruler
@@ -137,5 +143,10 @@ nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
 "Reload/Edit vim config
 nnoremap <leader><CR> :source $MYVIMRC<CR>
 nnoremap <leader>ed :e $MYVIMRC<CR>
+
 "Close buffer
 nnoremap <leader>q :bdelete<CR>
+
+"NerdTree keymaps
+map <leader>nn :NERDTreeToggle<CR>
+map <leader>nf :NERDTreeFind<cr>
