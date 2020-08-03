@@ -17,6 +17,7 @@ call plug#begin()
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'vuciv/vim-bujo'
+  Plug 'tpope/vim-commentary'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'

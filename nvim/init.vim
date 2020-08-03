@@ -118,9 +118,8 @@ nmap <leader>th <Plug>BujoAddnormal
 let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
 
 "Vim Fugitive
-nmap <leader>gh :diffget //3<CR>
-nmap <leader>gu :diffget //2<CR>
 nmap <leader>gs :G<CR>
+
 nnoremap <C-H> :bnext<CR>
 nnoremap <C-L> :bprev<CR>
 
@@ -146,6 +145,9 @@ nnoremap <leader>ed :e $MYVIMRC<CR>
 
 "Close buffer
 nnoremap <leader>q :bdelete<CR>
+
+"Close vim
+nnoremap <leader><C-Q> :q!<CR>
 
 "NerdTree keymaps
 map <leader>nn :NERDTreeToggle<CR>
