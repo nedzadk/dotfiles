@@ -10,6 +10,7 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   "Coloring
   Plug 'gruvbox-community/gruvbox'
+  Plug 'dracula/vim', { 'as': 'dracula' }
   "Nerdtree
   Plug 'preservim/nerdtree'
   "File icons
