@@ -11,6 +11,7 @@ call plug#begin()
   "Coloring
   Plug 'gruvbox-community/gruvbox'
   Plug 'dracula/vim', { 'as': 'dracula' }
+  Plug 'rakr/vim-one'
   "Nerdtree
   Plug 'preservim/nerdtree'
   "File icons
