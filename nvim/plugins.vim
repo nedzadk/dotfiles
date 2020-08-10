@@ -9,8 +9,6 @@ call plug#begin()
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
-  Plug 'gruvbox-community/gruvbox'
-  Plug 'dracula/vim', { 'as': 'dracula' }
   Plug 'rakr/vim-one'
   "Nerdtree
   Plug 'preservim/nerdtree'
@@ -18,7 +16,6 @@ call plug#begin()
   Plug 'ryanoasis/vim-devicons'
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
-  Plug 'vuciv/vim-bujo'
   Plug 'tpope/vim-commentary'
   " Statusline
   Plug 'vim-airline/vim-airline'
@@ -26,14 +23,10 @@ call plug#begin()
 call plug#end()
 
 let g:coc_global_extensions = [
-      \'coc-tslint-plugin',
       \'coc-tsserver',
-      \'coc-emmet',
+      \'coc-eslint',
       \'coc-css',
       \'coc-html',
       \'coc-json',
-      \'coc-yank',
-      \'coc-prettier',
-      \'coc-git',
-      \'coc-lists']
+      \'coc-prettier']
 
