@@ -24,7 +24,6 @@ call plug#end()
 
 let g:coc_global_extensions = [
       \'coc-tsserver',
-      \'coc-eslint',
       \'coc-css',
       \'coc-html',
       \'coc-json',

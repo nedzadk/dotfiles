@@ -114,16 +114,11 @@ nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
 nnoremap <leader>l :wincmd l<CR>
 
-"Vim TODO
-nmap <leader>tu <Plug>BujoChecknormal
-nmap <leader>th <Plug>BujoAddnormal
-let g:bujo#todo_file_path = $HOME . "/.cache/bujo"
-
 "Vim Fugitive
 nmap <leader>gs :G<CR>
 
-nnoremap <C-H> :bnext<CR>
-nnoremap <C-L> :bprev<CR>
+nnoremap <C-L> :bnext<CR>
+nnoremap <C-H> :bprev<CR>
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
