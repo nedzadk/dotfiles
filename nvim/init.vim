@@ -15,11 +15,12 @@ if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
-let g:gruvbox_invert_selection = 0
+
+" let g:gruvbox_material_background = 'hard'
+let g:one_allow_italics = 1 " I love italic for comments
 colorscheme one
 set background=dark
-let g:airline_theme='one'
-let g:one_allow_italics = 1
+let g:airline_theme='onedark'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
@@ -103,9 +104,7 @@ set shell=/bin/zsh
 
 "Line number configurations
 set number
-set relativenumber
 set cmdheight=2
-set colorcolumn=80
 
 "***************** KEY MAPPINGS ****************
 "highlight ColorColumn ctermbg=0 guibg=grey
@@ -151,7 +150,9 @@ map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<cr>
 
 "Airline fixes
-let g:airline_left_sep = ''
-let g:airline_left_sep = ''
-let g:airline_right_sep = ''
-let g:airline_right_sep = ''
+" let g:airline_left_sep = "\uE0B4"
+" let g:airline_right_sep = "\uE0B6"
+" let g:airline_left_sep = ''
+" let g:airline_right_sep = ''
+let g:airline_left_sep = "\uE0B0"
+let g:airline_right_sep = "\uE0B2"

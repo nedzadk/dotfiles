@@ -9,6 +9,9 @@ call plug#begin()
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'gruvbox-community/gruvbox'
   Plug 'rakr/vim-one'
   "Nerdtree
   Plug 'preservim/nerdtree'
