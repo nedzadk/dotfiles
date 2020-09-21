@@ -4,14 +4,13 @@ call plug#begin()
   "FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
+  "Javascript
+  Plug 'pangloss/vim-javascript'
   "Git
   Plug 'tpope/vim-fugitive'
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
-  Plug 'sainnhe/gruvbox-material'
-  Plug 'drewtempelmeyer/palenight.vim'
-  Plug 'gruvbox-community/gruvbox'
   Plug 'rakr/vim-one'
   "Nerdtree
   Plug 'preservim/nerdtree'
