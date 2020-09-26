@@ -19,6 +19,8 @@ call plug#begin()
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-commentary'
+  Plug 'tpope/vim-surround'
+  Plug 'mhinz/vim-startify'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'

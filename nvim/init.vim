@@ -1,22 +1,19 @@
-filetype plugin indent on
 scriptencoding utf-8
 source ~/.config/nvim/plugins.vim
 let mapleader=" "
 let g:mapleader=" "
 
 " Coloscheme
-syntax on
-set ruler
+syntax enable " Enable syntax highlight
 set t_Co=256
 
-set termguicolors
-"let g:gruvbox_contrast_dark = 'hard'
+set tgc " Set term gui colors (24 bit mode)
+
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-" let g:gruvbox_material_background = 'hard'
 let g:one_allow_italics = 1 " I love italic for comments
 colorscheme one
 set background=dark
@@ -49,6 +46,7 @@ set binary
 "FZF config
 let g:fzf_layout = { 'window': { 'width': 0.8, 'height': 0.8 } }
 let $FZF_DEFAULT_OPTS='--reverse'
+"let g:gruvbox_contrast_dark = 'hard'
 
 "Airline configuration
 let g:airline#extensions#tabline#enabled = 1
@@ -74,7 +72,6 @@ set shiftwidth=2
 set nowrap
 set nocursorline
 set noruler
-set cmdheight=1
 set smartindent
 set shortmess+=c
 
