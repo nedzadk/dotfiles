@@ -12,6 +12,8 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   "Coloring
   Plug 'rakr/vim-one'
+  Plug 'drewtempelmeyer/palenight.vim'
+  Plug 'sainnhe/gruvbox-material'
   "Nerdtree
   Plug 'preservim/nerdtree'
   "File icons

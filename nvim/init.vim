@@ -9,12 +9,12 @@ set t_Co=256
 
 set tgc " Set term gui colors (24 bit mode)
 
+let g:gruvbox_contrast_dark = 'hard'
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-let g:one_allow_italics = 1 " I love italic for comments
 colorscheme one
 set background=dark
 let g:airline_theme='onedark'
@@ -102,6 +102,7 @@ set shell=/bin/zsh
 "Line number configurations
 set number
 set cmdheight=2
+set relativenumber
 
 "***************** KEY MAPPINGS ****************
 "highlight ColorColumn ctermbg=0 guibg=grey
