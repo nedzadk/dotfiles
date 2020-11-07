@@ -10,14 +10,16 @@ set t_Co=256
 set tgc " Set term gui colors (24 bit mode)
 
 let g:gruvbox_contrast_dark = 'hard'
+
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme one
+colorscheme gruvbox
 set background=dark
-let g:airline_theme='onedark'
+let g:airline_theme='gruvbox'
+let g:gruvbox_contrast_dark='hard'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
@@ -50,6 +52,8 @@ let $FZF_DEFAULT_OPTS='--reverse'
 
 "Airline configuration
 let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#buffer_nr_show = 1
+let g:airline_powerline_fonts = 1
 
 "CoC config
 nmap <silent>lf  <Plug>(coc-fix-current)
@@ -123,6 +127,7 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>gr <Plug>(coc-deferences)
+nmap <leader>f <Plug>(coc-format-selected)
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 "Fzf and file searching
@@ -147,10 +152,8 @@ nnoremap <leader><C-Q> :q!<CR>
 map <leader>nn :NERDTreeToggle<CR>
 map <leader>nf :NERDTreeFind<cr>
 
-"Airline fixes
-" let g:airline_left_sep = "\uE0B4"
-" let g:airline_right_sep = "\uE0B6"
-" let g:airline_left_sep = ''
-" let g:airline_right_sep = ''
-let g:airline_left_sep = "\uE0B0"
-let g:airline_right_sep = "\uE0B2"
+let g:airline_left_sep = ''
+let g:airline_left_alt_sep = ''
+let g:airline_right_sep = ''
+let g:airline_right_alt_sep = ''
+
