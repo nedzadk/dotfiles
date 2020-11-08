@@ -26,9 +26,6 @@ call plug#begin()
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
-  " Misc
-  Plug 'rbtnn/vim-game_engine'
-  Plug 'rbtnn/vim-mario'
 call plug#end()
 
 let g:coc_global_extensions = [
