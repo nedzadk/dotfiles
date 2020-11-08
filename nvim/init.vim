@@ -127,7 +127,8 @@ nmap <leader>gy <Plug>(coc-type-definition)
 nmap <leader>gi <Plug>(coc-implementation)
 nmap <leader>rr <Plug>(coc-rename)
 nmap <leader>gr <Plug>(coc-deferences)
-nmap <leader>f <Plug>(coc-format-selected)
+" nmap <leader>f <Plug>(coc-format-selected)
+vmap <leader>f <Plug>(coc-format-selected)
 nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 "Fzf and file searching
