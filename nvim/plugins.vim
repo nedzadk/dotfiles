@@ -11,6 +11,7 @@ call plug#begin()
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
+  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
   Plug 'rakr/vim-one'
   Plug 'drewtempelmeyer/palenight.vim'
   Plug 'morhetz/gruvbox'

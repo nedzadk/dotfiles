@@ -9,18 +9,16 @@ set t_Co=256
 
 set tgc " Set term gui colors (24 bit mode)
 
-" let g:gruvbox_contrast_dark = 'hard'
-let g:palenight_terminal_italics=1
-
 if exists('+termguicolors')
     let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
     let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif
 
-colorscheme palenight
 set background=dark
-let g:airline_theme='palenight'
-let g:gruvbox_contrast_dark='hard'
+let g:material_terminal_italics = 1
+let g:material_theme_style = 'dark'
+colorscheme material
+let g:airline_theme='material'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
@@ -134,8 +132,7 @@ nnoremap <leader>prw :CocSearch <C-R>=expand("<cword>")<CR><CR>
 
 "Fzf and file searching
 nnoremap <C-p> :GFiles<CR>
-nnoremap <C-G> :Rg<SPACE>
-nnoremap <C-B> :Buffers<CR>
+nnoremap <leader>b :Buffers<CR>
 nnoremap <leader>pf :Files<CR>
 nnoremap <leader>ps :Rg<CR>
 nnoremap <leader>pv :wincmd v<bar> :Ex <bar> :vertical resize 30<CR>
