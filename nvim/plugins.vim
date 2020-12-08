@@ -23,7 +23,7 @@ call plug#begin()
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
-  Plug 'mhinz/vim-startify'
+  Plug 'APZelos/blamer.nvim'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'

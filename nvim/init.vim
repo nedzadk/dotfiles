@@ -54,11 +54,6 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#buffer_nr_show = 1
 let g:airline_powerline_fonts = 1
 
-"CoC config
-nmap <silent>lf  <Plug>(coc-fix-current)
-command! -nargs=0 Format :call CocAction('format')
-command! -nargs=0 Prettier :CocCommand prettier.formatFile
-
 if executable('rg')
     let g:rg_derive_root='true'
 endif
@@ -119,6 +114,9 @@ nmap <leader>gs :G<CR>
 
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
+
+"Gitblamer toggle
+nmap <leader>bb :BlamerToggle<CR>
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
