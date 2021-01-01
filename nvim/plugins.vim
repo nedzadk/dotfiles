@@ -11,9 +11,6 @@ call plug#begin()
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
-  Plug 'kaicataldo/material.vim', { 'branch': 'main' }
-  Plug 'rakr/vim-one'
-  Plug 'drewtempelmeyer/palenight.vim'
   Plug 'morhetz/gruvbox'
   "Nerdtree
   Plug 'preservim/nerdtree'
@@ -23,7 +20,6 @@ call plug#begin()
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-commentary'
   Plug 'tpope/vim-surround'
-  Plug 'APZelos/blamer.nvim'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -31,8 +27,11 @@ call plug#end()
 
 let g:coc_global_extensions = [
       \'coc-tsserver',
+      \'coc-emmet',
+      \'coc-pairs',
       \'coc-css',
       \'coc-html',
       \'coc-json',
-      \'coc-prettier']
+      \'coc-prettier',
+      \'coc-eslint']
 

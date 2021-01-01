@@ -17,8 +17,8 @@ endif
 set background=dark
 let g:material_terminal_italics = 1
 let g:material_theme_style = 'dark'
-colorscheme material
-let g:airline_theme='material'
+colorscheme gruvbox
+let g:airline_theme='gruvbox'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
@@ -32,7 +32,6 @@ au BufNewFile,BufRead *.ts setlocal filetype=typescript
 au BufNewFile,BufRead *.tsx setlocal filetype=typescript.tsx
 au BufNewFile,BufRead *.jsx setlocal filetype=typescript.tsx
 
-let loaded_matchparen = 1
 let g:netrw_browse_split = 2
 let g:netrw_banner = 0
 let g:netrw_winsize = 25
@@ -87,7 +86,7 @@ set nohlsearch
 set noerrorbells
 set scrolloff=8
 set noshowmode
-set updatetime=50
+set updatetime=300
 set shortmess+=c
 
 "swp
@@ -100,7 +99,6 @@ set shell=/bin/zsh
 "Line number configurations
 set number
 set cmdheight=2
-set relativenumber
 
 "***************** KEY MAPPINGS ****************
 "highlight ColorColumn ctermbg=0 guibg=grey
