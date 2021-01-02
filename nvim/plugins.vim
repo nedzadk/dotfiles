@@ -8,10 +8,12 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'
   "Git
   Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
   Plug 'morhetz/gruvbox'
+  Plug 'joshdick/onedark.vim'
   "Nerdtree
   Plug 'preservim/nerdtree'
   "File icons
