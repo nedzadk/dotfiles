@@ -1,0 +1,20 @@
+env:
+  TERM: xterm-256color-italic
+
+font:
+  size: 16
+  normal:
+    family: "mononoki Nerd Font Mono"
+  bold:
+    family: "mononoki Nerd Font Mono"
+  italic:
+    family: "mononoki Nerd Font Mono"
+  use_thin_strokes: true
+
+cursor:
+  style: Underline
+  thickness: 0.30
+
+mouse:
+  hide_when_typing: false
+
