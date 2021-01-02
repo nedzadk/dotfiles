@@ -8,6 +8,7 @@ call plug#begin()
   Plug 'pangloss/vim-javascript'
   "Git
   Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
   " Polyglot
   Plug 'sheerun/vim-polyglot'
@@ -21,7 +22,6 @@ call plug#begin()
   "Misc
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-commentary'
-  Plug 'tpope/vim-surround'
   " Statusline
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
@@ -35,5 +35,6 @@ let g:coc_global_extensions = [
       \'coc-html',
       \'coc-json',
       \'coc-prettier',
-      \'coc-eslint']
+      \'coc-highlight',
+      \'coc-snippets']
 

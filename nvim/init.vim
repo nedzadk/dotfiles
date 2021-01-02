@@ -15,10 +15,9 @@ if exists('+termguicolors')
 endif
 
 set background=dark
-let g:material_terminal_italics = 1
-let g:material_theme_style = 'dark'
-colorscheme gruvbox
-let g:airline_theme='gruvbox'
+let g:onedark_terminal_italics=1
+colorscheme onedark
+let g:airline_theme='onedark'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
@@ -113,8 +112,19 @@ nmap <leader>gs :G<CR>
 nnoremap <C-L> :bnext<CR>
 nnoremap <C-H> :bprev<CR>
 
-"Gitblamer toggle
-nmap <leader>bb :BlamerToggle<CR>
+"Coc Snippets
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? coc#_select_confirm() :
+      \ coc#expandableOrJumpable() ? "\<C-r>=coc#rpc#request('doKeymap', ['snippets-expand-jump',''])\<CR>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+let g:coc_snippet_next = '<tab>'
 
 " GoTo code navigation.
 nmap <leader>gd <Plug>(coc-definition)
