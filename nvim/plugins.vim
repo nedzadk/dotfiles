@@ -6,6 +6,7 @@ call plug#begin()
   Plug 'junegunn/fzf.vim'
   "Javascript
   Plug 'pangloss/vim-javascript'
+  Plug 'HerringtonDarkholme/yats.vim'
   "Git
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/gv.vim'
@@ -15,6 +16,7 @@ call plug#begin()
   "Coloring
   Plug 'morhetz/gruvbox'
   Plug 'joshdick/onedark.vim'
+  Plug 'mhartington/oceanic-next'
   "Nerdtree
   Plug 'preservim/nerdtree'
   "File icons

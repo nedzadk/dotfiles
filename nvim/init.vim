@@ -16,8 +16,8 @@ endif
 
 set background=dark
 let g:onedark_terminal_italics=1
-colorscheme onedark
-let g:airline_theme='onedark'
+colorscheme OceanicNext
+let g:airline_theme='oceanicnext'
 
 "NerdTree config
 autocmd StdinReadPre * let s:std_in=1
