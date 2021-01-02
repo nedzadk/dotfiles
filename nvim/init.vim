@@ -95,6 +95,10 @@ set fileformats=unix,dos,mac
 set showcmd
 set shell=/bin/zsh
 
+"More natural way of opening splits
+set splitbelow
+set splitright
+
 "Line number configurations
 set number
 set cmdheight=2
