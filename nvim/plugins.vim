@@ -7,6 +7,8 @@ call plug#begin()
   "Javascript
   Plug 'pangloss/vim-javascript'
   Plug 'HerringtonDarkholme/yats.vim'
+  "Rails
+  Plug 'tpope/vim-rails'
   "Git
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/gv.vim'
@@ -14,8 +16,6 @@ call plug#begin()
   " Polyglot
   Plug 'sheerun/vim-polyglot'
   "Coloring
-  Plug 'morhetz/gruvbox'
-  Plug 'joshdick/onedark.vim'
   Plug 'mhartington/oceanic-next'
   "Nerdtree
   Plug 'preservim/nerdtree'
