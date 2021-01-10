@@ -5,7 +5,7 @@ call plug#begin()
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
   "Javascript
-  Plug 'pangloss/vim-javascript'
+  Plug 'othree/yajs.vim'
   Plug 'HerringtonDarkholme/yats.vim'
   "Rails
   Plug 'tpope/vim-rails'
