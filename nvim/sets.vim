@@ -1,5 +1,5 @@
 set background=dark
-colorscheme OceanicNext
+colorscheme gruvbox
 
 let g:airline_theme='oceanicnext'
 " Coloscheme
@@ -10,14 +10,11 @@ set tgc " Set term gui colors (24 bit mode)
 
 "File encoding
 set encoding=utf-8
-set fileencoding=utf-8
-set fileencodings=utf-8
-set bomb
-set binary
 
 set noshowcmd
 set clipboard=unnamed
 set guicursor=
+set colorcolumn=80
 
 " Indent config
 set expandtab
@@ -36,15 +33,15 @@ set hidden
 "Search config
 set hlsearch
 set incsearch
-set ignorecase
-set smartcase
+"set ignorecase
+"set smartcase
 set nohlsearch
 
 "Misc config
 set noerrorbells
 set scrolloff=8
 set noshowmode
-set updatetime=300
+set updatetime=40
 set shortmess+=c
 
 "swp

@@ -1,6 +1,5 @@
 
 "***************** KEY MAPPINGS ****************
-"highlight ColorColumn ctermbg=0 guibg=grey
 nnoremap <leader>h :wincmd h<CR>
 nnoremap <leader>j :wincmd j<CR>
 nnoremap <leader>k :wincmd k<CR>
@@ -30,6 +29,6 @@ nnoremap <leader>q :bdelete<CR>
 nnoremap <leader><C-Q> :q!<CR>
 
 "NerdTree keymaps
-map <leader>nn :NERDTreeToggle<CR>
-map <leader>nf :NERDTreeFind<cr>
+map <leader>nn :Fern . -drawer<CR>
+map <leader>nf :Fern . -reveal=% -drawer<cr>
 

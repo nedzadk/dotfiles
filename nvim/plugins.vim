@@ -1,25 +1,35 @@
 call plug#begin()
-  "Neovim LSP
+  " Neovim LSP
   Plug 'neovim/nvim-lspconfig'
-  "FZF
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
+  " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
-  "Javascript
+  Plug 'stsewd/fzf-checkout.vim'
+  " Javascript
   Plug 'othree/yajs.vim'
   Plug 'HerringtonDarkholme/yats.vim'
-  "Rails
+  " Rails
   Plug 'tpope/vim-rails'
-  "Git
+  " Git
   Plug 'tpope/vim-fugitive'
   Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
   " Polyglot
   Plug 'sheerun/vim-polyglot'
-  "Coloring
+  " Coloring
   Plug 'mhartington/oceanic-next'
-  "File icons
+  Plug 'gruvbox-community/gruvbox'
+  " File icons
   Plug 'ryanoasis/vim-devicons'
-  "Misc
+  " Filemanager
+  Plug 'lambdalisue/fern.vim'
+  " Misc
   Plug 'ntpeters/vim-better-whitespace'
   Plug 'tpope/vim-commentary'
   Plug 'mhinz/vim-startify'

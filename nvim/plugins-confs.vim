@@ -17,11 +17,13 @@ if executable('rg')
     let g:rg_derive_root='true'
 endif
 
-
 let g:airline_left_sep = ''
 let g:airline_left_alt_sep = ''
 let g:airline_right_sep = ''
 let g:airline_right_alt_sep = ''
+
+" Change directory to the current buffer when opening files.
+set autochdir
 
 " returns all modified files of the current git repo
 " `2>/dev/null` makes the command fail quietly, so that when we are not
@@ -46,4 +48,6 @@ let g:startify_lists = [
         \ { 'type': function('s:gitUntracked'), 'header': ['   git untracked']},
         \ { 'type': 'commands',  'header': ['   Commands']       },
         \ ]
+
+lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 

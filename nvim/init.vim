@@ -3,9 +3,11 @@ let mapleader=" "
 let g:mapleader=" "
 
 source ~/.config/nvim/plugins.vim
+source ~/.config/nvim/lsp.vim
 source ~/.config/nvim/sets.vim
 source ~/.config/nvim/keymaps.vim
 source ~/.config/nvim/plugins-confs.vim
+source ~/.config/nvim/funcs.vim
 
 "TypeScript support
 au BufNewFile,BufRead *.js setlocal filetype=javascript
