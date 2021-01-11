@@ -11,6 +11,9 @@ Plug 'tjdevries/lsp_extensions.nvim'
 Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 Plug 'Shougo/deoplete-lsp'
 
+" Nerdtree
+Plug 'preservim/nerdtree'
+
 " Neovim Tree shitter
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
@@ -65,6 +68,8 @@ set cursorline
 set nobackup
 set noswapfile
 
+set scrolloff=8
+
 inoremap jj <esc>
 
 nnoremap <leader>p :GFiles<CR>
@@ -81,8 +86,13 @@ let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_mo
 command! -bang -nargs=? -complete=dir Files
      \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
 
+nnoremap <silent> <C-n> :NERDTreeToggle<CR>
+let g:NERDTreeQuitOnOpen = 1
+nmap <leader>nf :NERDTreeFind<CR>
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-" Enable treesitter 
+
+"  Enable treesitter 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
 " LSP configs
