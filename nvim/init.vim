@@ -22,11 +22,16 @@ Plug 'stsewd/fzf-checkout.vim'
 
 " Git
 Plug 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
 
 " telescope requirements...
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+
+" Airline
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
 " Colors
 Plug 'gruvbox-community/gruvbox'
@@ -37,6 +42,7 @@ syntax on
 " Set commands
 set tgc
 set guicursor=
+set background=dark
 colorscheme gruvbox
 set hidden
 set showcmd
@@ -48,15 +54,33 @@ set cmdheight=2
 set number
 set relativenumber
 set notimeout ttimeout ttimeoutlen=200
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set colorcolumn=80
+set clipboard+=unnamedplus
+set cursorline
+
+set nobackup
+set noswapfile
+
+inoremap jj <esc>
+
+nnoremap <leader>p :GFiles<CR>
+nnoremap <leader>r :so $MYVIMRC<CR>
 
 let mapleader=" "
 let loaded_matchparen = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#lsp#handler_enabled = 1
+
+let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
+let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
+let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
+command! -bang -nargs=? -complete=dir Files
+     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
+
 
 " Enable treesitter 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
