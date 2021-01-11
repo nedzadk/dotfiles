@@ -56,7 +56,6 @@ set nostartofline
 set cmdheight=2
 set number
 set relativenumber
-set notimeout ttimeout ttimeoutlen=200
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -72,10 +71,12 @@ set scrolloff=8
 
 inoremap jj <esc>
 
+nnoremap <SPACE> <Nop>
+let mapleader=" "
+
 nnoremap <leader>p :GFiles<CR>
 nnoremap <leader>r :so $MYVIMRC<CR>
 
-let mapleader=" "
 let loaded_matchparen = 1
 let g:deoplete#enable_at_startup = 1
 let g:deoplete#lsp#handler_enabled = 1
