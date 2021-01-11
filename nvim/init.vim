@@ -27,7 +27,7 @@ call plug#begin()
   Plug 'tpope/vim-fugitive'
   Plug 'airblade/vim-gitgutter'
 
-  " telescope requirements...
+  " Telescope requirements...
   Plug 'nvim-lua/popup.nvim'
   Plug 'nvim-lua/plenary.nvim'
   Plug 'nvim-telescope/telescope.nvim'
@@ -38,6 +38,9 @@ call plug#begin()
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
+
+  " Stuff
+  Plug 'dbeniamine/cheat.sh-vim'
 call plug#end()
 
 syntax on
@@ -75,6 +78,8 @@ nnoremap <SPACE> <Nop>
 let mapleader=" "
 
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>hj :HowIn javascript 
+nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
 nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
