@@ -1,6 +1,6 @@
 call plug#begin()
-  "Coc
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
+  "Neovim LSP
+  Plug 'neovim/nvim-lspconfig'
   "FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -17,8 +17,6 @@ call plug#begin()
   Plug 'sheerun/vim-polyglot'
   "Coloring
   Plug 'mhartington/oceanic-next'
-  "Nerdtree
-  Plug 'preservim/nerdtree'
   "File icons
   Plug 'ryanoasis/vim-devicons'
   "Misc
@@ -29,15 +27,4 @@ call plug#begin()
   Plug 'vim-airline/vim-airline'
   Plug 'vim-airline/vim-airline-themes'
 call plug#end()
-
-let g:coc_global_extensions = [
-      \'coc-tsserver',
-      \'coc-emmet',
-      \'coc-pairs',
-      \'coc-css',
-      \'coc-html',
-      \'coc-json',
-      \'coc-prettier',
-      \'coc-highlight',
-      \'coc-snippets']
 
