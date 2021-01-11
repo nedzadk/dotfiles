@@ -1,43 +1,43 @@
 set exrc
 
 call plug#begin()
-" Neovim lsp Plugins
-Plug 'neovim/nvim-lspconfig'
-Plug 'nvim-lua/completion-nvim'
-Plug 'tjdevries/nlua.nvim'
-Plug 'tjdevries/lsp_extensions.nvim'
+  " Neovim lsp Plugins
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/completion-nvim'
+  Plug 'tjdevries/nlua.nvim'
+  Plug 'tjdevries/lsp_extensions.nvim'
 
-" Deoplete
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'Shougo/deoplete-lsp'
+  " Deoplete
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete-lsp'
 
-" Nerdtree
-Plug 'preservim/nerdtree'
+  " Nerdtree
+  Plug 'preservim/nerdtree'
 
-" Neovim Tree shitter
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
+  " Neovim Tree shitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+  Plug 'nvim-treesitter/playground'
 
-" FZF
-Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'junegunn/fzf.vim'
-Plug 'stsewd/fzf-checkout.vim'
+  " FZF
+  Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+  Plug 'junegunn/fzf.vim'
+  Plug 'stsewd/fzf-checkout.vim'
 
-" Git
-Plug 'tpope/vim-fugitive'
-Plug 'airblade/vim-gitgutter'
+  " Git
+  Plug 'tpope/vim-fugitive'
+  Plug 'airblade/vim-gitgutter'
 
-" telescope requirements...
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
+  " telescope requirements...
+  Plug 'nvim-lua/popup.nvim'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope.nvim'
 
-" Airline
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
+  " Airline
+  Plug 'vim-airline/vim-airline'
+  Plug 'vim-airline/vim-airline-themes'
 
-" Colors
-Plug 'gruvbox-community/gruvbox'
+  " Colors
+  Plug 'gruvbox-community/gruvbox'
 call plug#end()
 
 syntax on
@@ -74,8 +74,12 @@ inoremap jj <esc>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-nnoremap <leader>p :GFiles<CR>
+nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>r :so $MYVIMRC<CR>
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 let loaded_matchparen = 1
 let g:deoplete#enable_at_startup = 1
