@@ -1,17 +1,9 @@
 set exrc
 
 call plug#begin()
-  " Neovim lsp Plugins
-  Plug 'neovim/nvim-lspconfig'
-  Plug 'nvim-lua/completion-nvim'
-  Plug 'tjdevries/nlua.nvim'
-  Plug 'tjdevries/lsp_extensions.nvim'
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-  " Deoplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/deoplete-lsp'
-
-  " Nerdtree
+" Nerdtree
   Plug 'preservim/nerdtree'
 
   " Neovim Tree shitter
@@ -73,11 +65,17 @@ set noswapfile
 set scrolloff=8
 
 inoremap jj <esc>
+inoremap zz :bd<CR>
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
+" Airline setup
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_buffers = 1
+
 nnoremap <C-p> :GFiles<CR>
+nnoremap <leader>zz :bd<CR>
 nnoremap <leader>hj :HowIn javascript 
 nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
@@ -86,9 +84,33 @@ nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
+
 let loaded_matchparen = 1
-let g:deoplete#enable_at_startup = 1
-let g:deoplete#lsp#handler_enabled = 1
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
@@ -105,8 +127,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 "  Enable treesitter 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
-" LSP configs
-lua << EOF
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.solargraph.setup{}
-EOF
