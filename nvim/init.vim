@@ -66,6 +66,7 @@ set scrolloff=8
 
 inoremap jj <esc>
 inoremap zz :bd<CR>
+nnoremap <leader>zz :bd<CR>
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
@@ -74,8 +75,11 @@ let mapleader=" "
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 
+" Navigate buffers
+nnoremap <silent> <C-l> :bn<CR>
+nnoremap <silent> <C-h> :bp<CR>
+
 nnoremap <C-p> :GFiles<CR>
-nnoremap <leader>zz :bd<CR>
 nnoremap <leader>hj :HowIn javascript 
 nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
