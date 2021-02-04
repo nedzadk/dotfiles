@@ -3,7 +3,7 @@ set exrc
 call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
-" Nerdtree
+  " Nerdtree
   Plug 'preservim/nerdtree'
 
   " Neovim Tree shitter
@@ -17,6 +17,7 @@ call plug#begin()
 
   " Git
   Plug 'tpope/vim-fugitive'
+  Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
 
   " Telescope requirements
@@ -33,6 +34,7 @@ call plug#begin()
 
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
+  Plug 'tmux-plugins/vim-tmux'
 call plug#end()
 
 syntax on
@@ -64,9 +66,7 @@ set noswapfile
 
 set scrolloff=8
 
-inoremap jj <esc>
-inoremap zz :bd<CR>
-nnoremap <leader>zz :bd<CR>
+inoremap jj <esc> :w <CR>
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
@@ -78,6 +78,7 @@ let g:airline#extensions#tabline#show_buffers = 1
 " Navigate buffers
 nnoremap <silent> <C-l> :bn<CR>
 nnoremap <silent> <C-h> :bp<CR>
+nnoremap <C-\> :bw<CR>
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>hj :HowIn javascript 
@@ -103,6 +104,9 @@ nmap <leader>f  <Plug>(coc-format-selected)
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Reset search highlight
+nnoremap <CR> :noh<CR><CR>
 
 function! s:show_documentation()
   if (index(['vim','help'], &filetype) >= 0)
