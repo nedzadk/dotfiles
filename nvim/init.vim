@@ -2,8 +2,8 @@ set exrc
 set pyxversion=3
 
 call plug#begin()
-  Plug 'neoclide/coc.nvim', {'branch': 'release'}
-
+  " LSP config
+  Plug 'neovim/nvim-lspconfig'
   " Nerdtree
   Plug 'preservim/nerdtree'
 
@@ -27,8 +27,7 @@ call plug#begin()
   Plug 'nvim-telescope/telescope.nvim'
 
   " Airline
-  Plug 'vim-airline/vim-airline'
-  Plug 'vim-airline/vim-airline-themes'
+  Plug 'itchyny/lightline.vim'
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
@@ -49,9 +48,17 @@ set background=dark
 if &runtimepath =~? 'plugged/gruvbox'
   let g:gruvbox_italic = 1
   let g:gruvbox_sign_column='bg0'
-  let g:airline_theme='gruvbox'
-
   colorscheme gruvbox  " must come after gruvbox_italic
+  let g:lightline = {
+      \ 'colorscheme': 'gruvbox',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \  },
+      \ }
 
   " match the fold column colors to the line number column
   " must come after colorscheme gruvbox
@@ -84,15 +91,7 @@ inoremap jj <esc> :w <CR>
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 
-" Airline setup
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#show_buffers = 1
-
 " Navigate buffers
-nnoremap K :BufferNext<CR>
-nnoremap J :BufferPrevious<CR>
-xnoremap K :BufferNext<CR>
-xnoremap J :BufferPrevious<CR>
 nnoremap <C-\> :bw<CR>
 
 nnoremap <C-p> :GFiles<CR>
@@ -102,34 +101,17 @@ nnoremap <leader>r :so $MYVIMRC<CR>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
+nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
+nnoremap <leader>gc <cmd>lua vim.lsp.buf.declaration()<CR>
+nnoremap <leader>gb <cmd>lua vim.lsp.buf.hover()<CR>
+nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
+nnoremap <silent>[d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
+nnoremap <silent>]d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
+nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
 
-" Symbol renaming.
-nmap <leader>rn <Plug>(coc-rename)
-
-" Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
 
 " Reset search highlight
 nnoremap <CR> :noh<CR><CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  elseif (coc#rpc#ready())
-    call CocActionAsync('doHover')
-  else
-    execute '!' . &keywordprg . " " . expand('<cword>')
-  endif
-endfunction
 
 let loaded_matchparen = 1
 
@@ -144,7 +126,13 @@ let g:NERDTreeQuitOnOpen = 1
 nmap <leader>nf :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-
 "  Enable treesitter 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
 
+" LSP configs 
+lua << EOF 
+require'lspconfig'.tsserver.setup{}
+require'lspconfig'.vimls.setup{}
+require'lspconfig'.yamlls.setup{}
+require'lspconfig'.solargraph.setup{}
+EOF 
