@@ -28,6 +28,7 @@ call plug#begin()
 
   " Airline
   Plug 'itchyny/lightline.vim'
+  Plug 'mengelbrecht/lightline-bufferline'
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
@@ -35,6 +36,7 @@ call plug#begin()
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
   Plug 'tmux-plugins/vim-tmux'
+  Plug 'sbdchd/neoformat'
 call plug#end()
 
 syntax on
@@ -45,6 +47,7 @@ set guicursor=
 set guioptions=
 let $NVIM_TERM = 1
 set background=dark
+set showtabline=2
 if &runtimepath =~? 'plugged/gruvbox'
   let g:gruvbox_italic = 1
   let g:gruvbox_sign_column='bg0'
@@ -55,10 +58,26 @@ if &runtimepath =~? 'plugged/gruvbox'
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \   'right': [ ['close'] ]
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
+      \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \  },
       \ }
+  let g:lightline#bufferline#show_number  = 1
+  let g:lightline#bufferline#shorten_path = 0
+  let g:lightline#bufferline#unnamed      = '[No Name]'
+  let g:lightline#bufferline#number_map = {
+      \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
+      \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
   " match the fold column colors to the line number column
   " must come after colorscheme gruvbox
