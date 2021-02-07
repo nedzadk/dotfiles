@@ -1,4 +1,5 @@
 set exrc
+set pyxversion=3
 
 call plug#begin()
   Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -42,8 +43,21 @@ syntax on
 " Set commands
 set tgc
 set guicursor=
+set guioptions=
+let $NVIM_TERM = 1
 set background=dark
-colorscheme gruvbox
+if &runtimepath =~? 'plugged/gruvbox'
+  let g:gruvbox_italic = 1
+  let g:gruvbox_sign_column='bg0'
+  let g:airline_theme='gruvbox'
+
+  colorscheme gruvbox  " must come after gruvbox_italic
+
+  " match the fold column colors to the line number column
+  " must come after colorscheme gruvbox
+  highlight clear FoldColumn
+  highlight! link FoldColumn LineNr
+endif
 set hidden
 set showcmd
 set hlsearch
@@ -51,8 +65,7 @@ set backspace=indent,eol,start
 set autoindent
 set nostartofline
 set cmdheight=2
-set number
-set relativenumber
+set number relativenumber
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -76,18 +89,18 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#show_buffers = 1
 
 " Navigate buffers
-nnoremap <silent> <C-l> :bn<CR>
-nnoremap <silent> <C-h> :bp<CR>
+nnoremap K :BufferNext<CR>
+nnoremap J :BufferPrevious<CR>
+xnoremap K :BufferNext<CR>
+xnoremap J :BufferPrevious<CR>
 nnoremap <C-\> :bw<CR>
 
 nnoremap <C-p> :GFiles<CR>
 nnoremap <leader>hj :HowIn javascript 
 nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
-nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
 nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
 nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
-nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
 " GoTo code navigation.
 nmap <silent> gd <Plug>(coc-definition)
