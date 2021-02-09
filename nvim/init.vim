@@ -4,6 +4,7 @@ set pyxversion=3
 call plug#begin()
   " LSP config
   Plug 'neovim/nvim-lspconfig'
+
   " Nerdtree
   Plug 'preservim/nerdtree'
 
@@ -139,6 +140,10 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" Buffer navigation
+nmap <leader>H :bprev<CR>
+nmap <leader>L :bnext<CR>
 
 " Reset search highlight
 nnoremap <CR> :noh<CR><CR>
