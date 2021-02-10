@@ -55,7 +55,7 @@ set showtabline=2
 let g:deoplete#enable_at_startup = 1
 if &runtimepath =~? 'plugged/gruvbox'
   let g:gruvbox_italic = 1
-  let g:gruvbox_sign_column='bg0'
+  let g:gruvbox_sign_column = 'bg0'
   colorscheme gruvbox  " must come after gruvbox_italic
   let g:lightline = {
       \ 'colorscheme': 'gruvbox',
@@ -63,20 +63,14 @@ if &runtimepath =~? 'plugged/gruvbox'
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
       \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \   'right': [ ['close'] ]
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead'
       \  },
       \ }
+  let g:lightline                  = {}
+  let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
+  let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
+  let g:lightline.component_type   = {'buffers': 'tabsel'}
   let g:lightline#bufferline#show_number  = 1
   let g:lightline#bufferline#shorten_path = 0
   let g:lightline#bufferline#unnamed      = '[No Name]'
