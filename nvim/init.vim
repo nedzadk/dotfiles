@@ -1,9 +1,12 @@
 set exrc
 set pyxversion=3
-
+filetype plugin indent on
 call plug#begin()
   " LSP config
   Plug 'neovim/nvim-lspconfig'
+  " Deoplete
+  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+  Plug 'Shougo/deoplete-lsp'
 
   " Nerdtree
   Plug 'preservim/nerdtree'
@@ -49,6 +52,7 @@ set guioptions=
 let $NVIM_TERM = 1
 set background=dark
 set showtabline=2
+let g:deoplete#enable_at_startup = 1
 if &runtimepath =~? 'plugged/gruvbox'
   let g:gruvbox_italic = 1
   let g:gruvbox_sign_column='bg0'
@@ -171,3 +175,4 @@ require'lspconfig'.vimls.setup{}
 require'lspconfig'.yamlls.setup{}
 require'lspconfig'.solargraph.setup{}
 EOF 
+
