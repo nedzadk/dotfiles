@@ -25,11 +25,6 @@ call plug#begin()
   Plug 'junegunn/gv.vim'
   Plug 'airblade/vim-gitgutter'
 
-  " Telescope requirements
-  Plug 'nvim-lua/popup.nvim'
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-
   " Airline
   Plug 'itchyny/lightline.vim'
   Plug 'mengelbrecht/lightline-bufferline'
@@ -41,6 +36,11 @@ call plug#begin()
   Plug 'dbeniamine/cheat.sh-vim'
   Plug 'tmux-plugins/vim-tmux'
   Plug 'sbdchd/neoformat'
+
+  " More of tpope magic 
+  Plug 'tpope/vim-surround'
+  Plug 'tpope/vim-rails'
+  Plug 'tpope/vim-dotenv'
 call plug#end()
 
 syntax on
@@ -118,12 +118,11 @@ let mapleader=" "
 " Navigate buffers
 nnoremap <C-\> :bw<CR>
 
-nnoremap <C-p> :GFiles<CR>
+nnoremap <C-g> :FzfGFiles<CR>
+nnoremap <C-p> :FZF<CR>
 nnoremap <leader>hj :HowIn javascript 
 nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
-nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
-nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
 
 nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
 nnoremap <leader>gc <cmd>lua vim.lsp.buf.declaration()<CR>
@@ -153,6 +152,8 @@ nmap <leader>L :bnext<CR>
 nnoremap <CR> :noh<CR><CR>
 
 let loaded_matchparen = 1
+let g:fzf_checkout_git_options = '--sort=-committerdate'
+let g:fzf_command_prefix = 'Fzf'
 
 let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
 let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
