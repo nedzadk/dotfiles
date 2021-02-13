@@ -34,7 +34,6 @@ call plug#begin()
 
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
-  Plug 'tmux-plugins/vim-tmux'
   Plug 'sbdchd/neoformat'
 
   " More of tpope magic 

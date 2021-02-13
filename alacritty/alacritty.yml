@@ -2,13 +2,13 @@ env:
   TERM: xterm-256color
 
 font:
-  size: 15
+  size: 20
   normal:
-    family: "mononoki Nerd Font Mono"
+    family: "ProggyCleanTTSZ"
   bold:
-    family: "mononoki Nerd Font Mono"
+    family: "ProggyCleanTTSZ"
   italic:
-    family: "mononoki Nerd Font Mono"
+    family: "ProggyCleanTTSZ"
   use_thin_strokes: true
 window:
   padding:
