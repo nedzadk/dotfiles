@@ -104,7 +104,7 @@ let g:lightline = {
   \ },
   \ }
 
-" KEYBOARD MAPPINGS
+" |||||||||||   KEYBOARD MAPPINGS    |||||||||||||
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
