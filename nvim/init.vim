@@ -34,9 +34,18 @@ call plug#begin()
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-dotenv'
 call plug#end()
-let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-yaml', 'coc-css', 'coc-git']
+
+let g:coc_global_extensions = [
+  \ 'coc-json', 
+  \ 'coc-tsserver', 
+  \ 'coc-prettier', 
+  \ 'coc-yaml', 
+  \ 'coc-css', 
+  \ 'coc-git'
+  \ ]
 
 syntax on
+
 " Set commands
 set tgc
 set guicursor=
@@ -45,43 +54,7 @@ let $NVIM_TERM = 1
 set showtabline=2
 set laststatus=2
 
-let g:gruvbox_italic = 1
-let g:gruvbox_sign_column = 'bg0'
-set background=dark
-colorscheme gruvbox  " must come after gruvbox_italic
-let g:airline_theme='gruvbox'
-let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
-      \ 'active': {
-      \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right':[
-      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-      \     [ 'blame' ] ],
-      \ },
-      \ 'tabline': {
-      \   'left': [ ['buffers'] ],
-      \ },
-      \ 'component_expand': {
-      \   'buffers': 'lightline#bufferline#buffers'
-      \ },
-      \ 'component_type': {
-      \   'buffers': 'tabsel'
-      \ },
-      \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead',
-      \   'blame': 'LightlineGitBlame',
-      \ },
-      \ }
-
-function! LightlineGitBlame() abort
-  let blame = get(b:, 'coc_git_blame', '')
-  " return blame
-  return winwidth(0) > 120 ? blame : ''
-endfunction
-
-highlight clear FoldColumn
-highlight! link FoldColumn LineNr
+" Basic editor setup
 set hidden
 set showcmd
 set hlsearch
@@ -99,18 +72,46 @@ set clipboard+=unnamedplus
 set cursorline
 set nobackup
 set noswapfile
-
 set scrolloff=8
 
-inoremap jj <esc> :w <CR>
+" Theme setup
+let g:gruvbox_italic = 1
+let g:gruvbox_sign_column = 'bg0'
+set background=dark
+colorscheme gruvbox  " must come after gruvbox_italic
+
+" Setup statusbars
+let g:lightline = {
+  \ 'colorscheme': 'gruvbox',
+  \ 'active': {
+  \   'left': [ [ 'mode', 'paste' ],
+  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+  \   'right':[
+  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+  \   ],
+  \ },
+  \ 'tabline': {
+  \   'left': [ ['buffers'] ],
+  \ },
+  \ 'component_expand': {
+  \   'buffers': 'lightline#bufferline#buffers'
+  \ },
+  \ 'component_type': {
+  \   'buffers': 'tabsel'
+  \ },
+  \ 'component_function': {
+  \   'gitbranch': 'FugitiveHead'
+  \ },
+  \ }
+
+" KEYBOARD MAPPINGS
 
 nnoremap <SPACE> <Nop>
 let mapleader=" "
-
-" Navigate buffers
 nnoremap <C-\> :bw<CR>
 
 nnoremap <C-g> :FzfGFiles<CR>
+nnoremap <C-r> :FzfRg<CR>
 nnoremap <C-p> :FZF<CR>
 nnoremap <leader>hj :HowIn javascript 
 nnoremap <leader>ht :HowIn typescript 
@@ -163,6 +164,8 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
+
+" Things i have no idea what they do :S 
 
 let loaded_matchparen = 1
 let g:fzf_checkout_git_options = '--sort=-committerdate'
