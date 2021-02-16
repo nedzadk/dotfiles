@@ -8,9 +8,8 @@ call plug#begin()
   " Nerdtree
   Plug 'preservim/nerdtree'
 
-  " Neovim Tree shitter
-  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-  Plug 'nvim-treesitter/playground'
+  " Polyglot
+  Plug 'sheerun/vim-polyglot'
 
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
@@ -182,5 +181,3 @@ let g:NERDTreeQuitOnOpen = 1
 nmap <leader>nf :NERDTreeFind<CR>
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
-"  Enable treesitter 
-lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
