@@ -2,11 +2,8 @@ set exrc
 set pyxversion=3
 filetype plugin indent on
 call plug#begin()
-  " LSP config
-  Plug 'neovim/nvim-lspconfig'
-  " Deoplete
-  Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  Plug 'Shougo/deoplete-lsp'
+  " CoC
+  Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
   " Nerdtree
   Plug 'preservim/nerdtree'
@@ -22,10 +19,8 @@ call plug#begin()
 
   " Git
   Plug 'tpope/vim-fugitive'
-  Plug 'junegunn/gv.vim'
-  Plug 'airblade/vim-gitgutter'
 
-  " Airline
+  " Lightline
   Plug 'itchyny/lightline.vim'
   Plug 'mengelbrecht/lightline-bufferline'
 
@@ -34,54 +29,59 @@ call plug#begin()
 
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
-  Plug 'sbdchd/neoformat'
 
   " More of tpope magic 
-  Plug 'tpope/vim-surround'
   Plug 'tpope/vim-rails'
   Plug 'tpope/vim-dotenv'
 call plug#end()
+let g:coc_global_extensions = ['coc-json', 'coc-tsserver', 'coc-prettier', 'coc-yaml', 'coc-css', 'coc-git']
 
 syntax on
-
 " Set commands
 set tgc
 set guicursor=
 set guioptions=
 let $NVIM_TERM = 1
-set background=dark
 set showtabline=2
-let g:deoplete#enable_at_startup = 1
-if &runtimepath =~? 'plugged/gruvbox'
-  let g:gruvbox_italic = 1
-  let g:gruvbox_sign_column = 'bg0'
-  colorscheme gruvbox  " must come after gruvbox_italic
-  let g:lightline = {
+set laststatus=2
+
+let g:gruvbox_italic = 1
+let g:gruvbox_sign_column = 'bg0'
+set background=dark
+colorscheme gruvbox  " must come after gruvbox_italic
+let g:airline_theme='gruvbox'
+let g:lightline = {
       \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
-      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
+      \   'right':[
+      \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
+      \     [ 'blame' ] ],
+      \ },
+      \ 'tabline': {
+      \   'left': [ ['buffers'] ],
+      \ },
+      \ 'component_expand': {
+      \   'buffers': 'lightline#bufferline#buffers'
+      \ },
+      \ 'component_type': {
+      \   'buffers': 'tabsel'
       \ },
       \ 'component_function': {
-      \   'gitbranch': 'FugitiveHead'
-      \  },
+      \   'gitbranch': 'FugitiveHead',
+      \   'blame': 'LightlineGitBlame',
+      \ },
       \ }
-  let g:lightline                  = {}
-  let g:lightline.tabline          = {'left': [['buffers']], 'right': [['close']]}
-  let g:lightline.component_expand = {'buffers': 'lightline#bufferline#buffers'}
-  let g:lightline.component_type   = {'buffers': 'tabsel'}
-  let g:lightline#bufferline#show_number  = 1
-  let g:lightline#bufferline#shorten_path = 0
-  let g:lightline#bufferline#unnamed      = '[No Name]'
-  let g:lightline#bufferline#number_map = {
-      \ 0: '⁰', 1: '¹', 2: '²', 3: '³', 4: '⁴',
-      \ 5: '⁵', 6: '⁶', 7: '⁷', 8: '⁸', 9: '⁹'}
 
-  " match the fold column colors to the line number column
-  " must come after colorscheme gruvbox
-  highlight clear FoldColumn
-  highlight! link FoldColumn LineNr
-endif
+function! LightlineGitBlame() abort
+  let blame = get(b:, 'coc_git_blame', '')
+  " return blame
+  return winwidth(0) > 120 ? blame : ''
+endfunction
+
+highlight clear FoldColumn
+highlight! link FoldColumn LineNr
 set hidden
 set showcmd
 set hlsearch
@@ -97,7 +97,6 @@ set expandtab
 set colorcolumn=80
 set clipboard+=unnamedplus
 set cursorline
-
 set nobackup
 set noswapfile
 
@@ -117,15 +116,43 @@ nnoremap <leader>hj :HowIn javascript
 nnoremap <leader>ht :HowIn typescript 
 nnoremap <leader>r :so $MYVIMRC<CR>
 
-nnoremap <leader>gd <cmd>lua vim.lsp.buf.definition()<CR>
-nnoremap <leader>gc <cmd>lua vim.lsp.buf.declaration()<CR>
-nnoremap <leader>gb <cmd>lua vim.lsp.buf.hover()<CR>
-nnoremap <leader>rn <cmd>lua vim.lsp.buf.rename()<CR>
-nnoremap <silent>[d <cmd>lua vim.lsp.diagnostic.goto_next()<CR>
-nnoremap <silent>]d <cmd>lua vim.lsp.diagnostic.goto_prev()<CR>
-nnoremap <leader>f <cmd>lua vim.lsp.buf.formatting()<CR>
+" CoC Config 
+nmap <silent> [d <Plug>(coc-diagnostic-prev)
+nmap <silent> ]d <Plug>(coc-diagnostic-next)
 
-" Lightline maps
+" GitGutter
+nmap ]c <Plug>(GitGutterNextHunk)
+nmap [c <Plug>(GitGutterPrevHunk)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" Symbol renaming.
+nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+" Buffer navigation
+nmap <leader>H :bprev<CR>
+nmap <leader>L :bnext<CR>
+
+" Reset search highlight
+nnoremap <CR> :noh<CR><CR>
+
+" Lightline buffer navigation
 nmap <Leader>1 <Plug>lightline#bufferline#go(1)
 nmap <Leader>2 <Plug>lightline#bufferline#go(2)
 nmap <Leader>3 <Plug>lightline#bufferline#go(3)
@@ -136,13 +163,6 @@ nmap <Leader>7 <Plug>lightline#bufferline#go(7)
 nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
-
-" Buffer navigation
-nmap <leader>H :bprev<CR>
-nmap <leader>L :bnext<CR>
-
-" Reset search highlight
-nnoremap <CR> :noh<CR><CR>
 
 let loaded_matchparen = 1
 let g:fzf_checkout_git_options = '--sort=-committerdate'
@@ -161,12 +181,3 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 
 "  Enable treesitter 
 lua require'nvim-treesitter.configs'.setup { highlight = { enable = true } }
-
-" LSP configs 
-lua << EOF 
-require'lspconfig'.tsserver.setup{}
-require'lspconfig'.vimls.setup{}
-require'lspconfig'.yamlls.setup{}
-require'lspconfig'.solargraph.setup{}
-EOF 
-
