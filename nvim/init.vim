@@ -80,15 +80,15 @@ set noswapfile
 set scrolloff=8
 
 " Theme setup
-" let g:gruvbox_italic = 1
-" let g:gruvbox_sign_column = 'bg0'
+let g:gruvbox_italic = 1
+let g:gruvbox_sign_column = 'bg0'
 let g:palenight_terminal_italics=1
 set background=dark
-colorscheme palenight  " must come after gruvbox_italic
+colorscheme gruvbox  " must come after gruvbox_italic
 
 " Setup statusbars
 let g:lightline = {
-  \ 'colorscheme': 'palenight',
+  \ 'colorscheme': 'gruvbox',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -171,20 +171,5 @@ nmap <Leader>8 <Plug>lightline#bufferline#go(8)
 nmap <Leader>9 <Plug>lightline#bufferline#go(9)
 nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
-" Things i have no idea what they do :S 
-
-let loaded_matchparen = 1
-let g:fzf_checkout_git_options = '--sort=-committerdate'
-let g:fzf_command_prefix = 'Fzf'
-
-let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.9 } }
-let $FZF_DEFAULT_OPTS="--ansi --preview-window 'right:60%' --layout reverse --margin=1,4 --preview 'bat --color=always --style=header,grid --line-range :300 {}'"
-let $FZF_DEFAULT_COMMAND = 'rg --files --ignore-case --hidden -g "!{.git,node_modules,vendor}/*"'
-command! -bang -nargs=? -complete=dir Files
-     \ call fzf#vim#files(<q-args>, fzf#vim#with_preview(), <bang>0)
-
-nnoremap <silent> <C-n> :NERDTreeToggle<CR>
-let g:NERDTreeQuitOnOpen = 1
-nmap <leader>nf :NERDTreeFind<CR>
-autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-
+source ~/.config/nvim/fzf_config.vim
+source ~/.config/nvim/nerd_config.vim
