@@ -26,6 +26,9 @@ call plug#begin()
   " Colors
   Plug 'gruvbox-community/gruvbox'
 
+  " Firenvim
+  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
+
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
 
@@ -52,6 +55,7 @@ set guioptions=
 let $NVIM_TERM = 1
 set showtabline=2
 set laststatus=2
+set guifont=ProggyCleanTTSZ:h25
 
 " Basic editor setup
 set hidden
