@@ -63,6 +63,8 @@ set guifont=ProggyCleanTTSZ:h25
 set hidden
 set showcmd
 set hlsearch
+set showmatch
+set mat=1
 set backspace=indent,eol,start
 set autoindent
 set nostartofline
