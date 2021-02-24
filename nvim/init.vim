@@ -25,6 +25,8 @@ call plug#begin()
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
+  Plug 'drewtempelmeyer/palenight.vim'
+
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -78,14 +80,15 @@ set noswapfile
 set scrolloff=8
 
 " Theme setup
-let g:gruvbox_italic = 1
-let g:gruvbox_sign_column = 'bg0'
+" let g:gruvbox_italic = 1
+" let g:gruvbox_sign_column = 'bg0'
+let g:palenight_terminal_italics=1
 set background=dark
-colorscheme gruvbox  " must come after gruvbox_italic
+colorscheme palenight  " must come after gruvbox_italic
 
 " Setup statusbars
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'palenight',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
