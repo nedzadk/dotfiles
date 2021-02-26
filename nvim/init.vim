@@ -8,9 +8,6 @@ call plug#begin()
   " Nerdtree
   Plug 'preservim/nerdtree'
 
-  " Polyglot
-  Plug 'sheerun/vim-polyglot'
-
   " FZF
   Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
   Plug 'junegunn/fzf.vim'
@@ -19,14 +16,15 @@ call plug#begin()
   " Git
   Plug 'tpope/vim-fugitive'
 
+  " TreeSitter
+  Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
+
   " Lightline
   Plug 'itchyny/lightline.vim'
   Plug 'mengelbrecht/lightline-bufferline'
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
-  Plug 'drewtempelmeyer/palenight.vim'
-
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -47,7 +45,7 @@ let g:coc_global_extensions = [
   \ 'coc-css', 
   \ 'coc-git'
   \ ]
-
+autocmd FileType scss setl iskeyword+=@-@
 syntax on
 
 " Set commands
@@ -139,6 +137,13 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
+" Git Mappings
+nmap <silent> gs :Gstatus<CR>
+nmap <silent> gc :Gcommit<CR>
+nmap <silent> gp :Git push<CR>
+nmap <silent> gb :Gblame<CR>
+
+
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
@@ -175,3 +180,4 @@ nmap <Leader>0 <Plug>lightline#bufferline#go(10)
 
 source ~/.config/nvim/fzf_config.vim
 source ~/.config/nvim/nerd_config.vim
+source ~/.config/nvim/tree_sitter.vim
