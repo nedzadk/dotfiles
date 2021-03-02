@@ -25,6 +25,7 @@ call plug#begin()
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
+  Plug 'joshdick/onedark.vim'
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -45,14 +46,15 @@ let g:coc_global_extensions = [
   \ 'coc-css', 
   \ 'coc-git'
   \ ]
+
 autocmd FileType scss setl iskeyword+=@-@
 syntax on
+let $NVIM_TERM = 1
 
 " Set commands
 set tgc
 set guicursor=
 set guioptions=
-let $NVIM_TERM = 1
 set showtabline=2
 set laststatus=2
 set guifont=ProggyCleanTTSZ:h25
@@ -84,11 +86,11 @@ let g:gruvbox_italic = 1
 let g:gruvbox_sign_column = 'bg0'
 let g:palenight_terminal_italics=1
 set background=dark
-colorscheme gruvbox  " must come after gruvbox_italic
+colorscheme onedark  " must come after gruvbox_italic
 
 " Setup statusbars
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'onedark',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
