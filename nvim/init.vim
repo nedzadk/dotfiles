@@ -25,7 +25,6 @@ call plug#begin()
 
   " Colors
   Plug 'gruvbox-community/gruvbox'
-  Plug 'joshdick/onedark.vim'
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
