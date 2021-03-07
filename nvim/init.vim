@@ -24,7 +24,9 @@ call plug#begin()
   Plug 'mengelbrecht/lightline-bufferline'
 
   " Colors
-  Plug 'gruvbox-community/gruvbox'
+  Plug 'pineapplegiant/spaceduck'
+  Plug 'cocopon/iceberg.vim'
+  Plug 'ajmwagar/vim-deus'
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -39,6 +41,7 @@ call plug#end()
 
 let g:coc_global_extensions = [
   \ 'coc-json', 
+  \ 'coc-solargraph',
   \ 'coc-tsserver', 
   \ 'coc-prettier', 
   \ 'coc-yaml', 
@@ -83,15 +86,13 @@ set noswapfile
 set scrolloff=8
 
 " Theme setup
-let g:gruvbox_italic = 1
-let g:gruvbox_sign_column = 'bg0'
-let g:palenight_terminal_italics=1
+let g:material_theme_style = "darker-community"
 set background=dark
-colorscheme gruvbox  " must come after gruvbox_italic
+colorscheme spaceduck
 
 " Setup statusbars
 let g:lightline = {
-  \ 'colorscheme': 'gruvbox',
+  \ 'colorscheme': 'spaceduck',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
