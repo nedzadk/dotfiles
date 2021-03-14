@@ -3,6 +3,8 @@
     "css",
     "markdown",
     "javascript",
+    "typescript",
+    "typescriptreact",
     "graphql",
     "html",
     "yaml",
@@ -11,9 +13,6 @@
   "tsserver.tsdk": ".yarn/sdks/typescript/lib",
   "eslint.packageManager": "yarn",
   "eslint.nodePath": ".yarn/sdks",
-  "snippets.ultisnips.directories": [
-    "UltiSnips",
-    "~/.config/nvim/utils/snips"
-  ],
+  "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/utils/snips"],
   "git.enableGutters": true
 }
