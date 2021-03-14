@@ -24,9 +24,8 @@ call plug#begin()
   Plug 'mengelbrecht/lightline-bufferline'
 
   " Colors
-  Plug 'pineapplegiant/spaceduck'
-  Plug 'cocopon/iceberg.vim'
-  Plug 'ajmwagar/vim-deus'
+  Plug 'sainnhe/gruvbox-material'
+  Plug 'ryanoasis/vim-devicons'
 
   " Firenvim
   Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
@@ -88,11 +87,11 @@ set scrolloff=8
 " Theme setup
 let g:material_theme_style = "darker-community"
 set background=dark
-colorscheme spaceduck
+colorscheme gruvbox-material
 
 " Setup statusbars
 let g:lightline = {
-  \ 'colorscheme': 'spaceduck',
+  \ 'colorscheme': 'gruvbox_material',
   \ 'active': {
   \   'left': [ [ 'mode', 'paste' ],
   \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
@@ -155,8 +154,8 @@ nnoremap <silent> K :call <SID>show_documentation()<CR>
 nmap <leader>rn <Plug>(coc-rename)
 
 " Formatting selected code.
-xmap <leader>f  <Plug>(coc-format-selected)
-nmap <leader>f  <Plug>(coc-format-selected)
+xmap <leader>f  <Plug>(coc-format-selected)<CR>
+nmap <leader>f  <Plug>(coc-format-selected)<CR>
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
