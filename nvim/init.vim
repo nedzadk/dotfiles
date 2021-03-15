@@ -28,6 +28,8 @@ call plug#begin()
   " Colors
   Plug 'sainnhe/gruvbox-material'
   Plug 'ryanoasis/vim-devicons'
+  " Bufferline
+  Plug 'akinsho/nvim-bufferline.lua'
 
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
@@ -92,6 +94,7 @@ colorscheme gruvbox-material
 nnoremap <SPACE> <Nop>
 let mapleader=" "
 nnoremap <C-\> :bw<CR>
+nnoremap <C-q> :bd!<CR>
 
 nnoremap <C-g> :FzfGFiles<CR>
 nnoremap <C-r> :FzfRg<CR>
@@ -120,6 +123,16 @@ nmap <silent> gc :Gcommit<CR>
 nmap <silent> gp :Git push<CR>
 nmap <silent> gb :Gblame<CR>
 
+"Buffer line config
+" These commands will navigate through buffers in order regardless of which mode you are using
+" e.g. if you change the order of buffers :bnext and :bprevious will not respect the custom ordering
+nnoremap <silent>[b :BufferLineCycleNext<CR>
+nnoremap <silent>]b :BufferLineCyclePrev<CR>
+
+" These commands will sort buffers by directory, language, or a custom criteria
+nnoremap <silent>be :BufferLineSortByExtension<CR>
+nnoremap <silent>bd :BufferLineSortByDirectory<CR>
+
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -137,8 +150,8 @@ nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
 " Buffer navigation
-nmap <leader>H :bprev<CR>
-nmap <leader>L :bnext<CR>
+nmap <C-h> :bprev<CR>
+nmap <C-l> :bnext<CR>
 
 " Reset search highlight
 nnoremap <CR> :noh<CR><CR>
@@ -147,3 +160,4 @@ source ~/.config/nvim/fzf_config.vim
 source ~/.config/nvim/nerd_config.vim
 source ~/.config/nvim/tree_sitter.vim
 source ~/.config/nvim/misc_lua_config.vim
+source ~/.config/nvim/bufferline.vim
