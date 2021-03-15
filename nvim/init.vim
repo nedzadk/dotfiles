@@ -19,16 +19,15 @@ call plug#begin()
   " TreeSitter
   Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}  " We recommend updating the parsers on update
 
-  " Lightline
-  Plug 'itchyny/lightline.vim'
-  Plug 'mengelbrecht/lightline-bufferline'
+  Plug 'glepnir/galaxyline.nvim' , {'branch': 'main'}
+
+  " If you want to display icons, then use one of these plugins:
+  Plug 'kyazdani42/nvim-web-devicons' " lua
+  Plug 'ryanoasis/vim-devicons' " vimscript
 
   " Colors
   Plug 'sainnhe/gruvbox-material'
   Plug 'ryanoasis/vim-devicons'
-
-  " Firenvim
-  Plug 'glacambre/firenvim', { 'do': { _ -> firenvim#install(0) } }
 
   " Stuff
   Plug 'dbeniamine/cheat.sh-vim'
@@ -45,7 +44,7 @@ let g:coc_global_extensions = [
   \ 'coc-prettier', 
   \ 'coc-yaml', 
   \ 'coc-css', 
-  \ 'coc-git'
+  \ 'coc-git', 
   \ ]
 
 command! -nargs=0 Prettier :CocCommand prettier.formatFile
@@ -60,7 +59,6 @@ set guicursor=
 set guioptions=
 set showtabline=2
 set laststatus=2
-set guifont=ProggyCleanTTSZ:h25
 
 " Basic editor setup
 set hidden
@@ -88,30 +86,6 @@ set scrolloff=8
 let g:material_theme_style = "darker-community"
 set background=dark
 colorscheme gruvbox-material
-
-" Setup statusbars
-let g:lightline = {
-  \ 'colorscheme': 'gruvbox_material',
-  \ 'active': {
-  \   'left': [ [ 'mode', 'paste' ],
-  \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-  \   'right':[
-  \     [ 'filetype', 'fileencoding', 'lineinfo', 'percent' ],
-  \   ],
-  \ },
-  \ 'tabline': {
-  \   'left': [ ['buffers'] ],
-  \ },
-  \ 'component_expand': {
-  \   'buffers': 'lightline#bufferline#buffers'
-  \ },
-  \ 'component_type': {
-  \   'buffers': 'tabsel'
-  \ },
-  \ 'component_function': {
-  \   'gitbranch': 'FugitiveHead'
-  \ },
-  \ }
 
 " |||||||||||   KEYBOARD MAPPINGS    |||||||||||||
 
@@ -169,18 +143,7 @@ nmap <leader>L :bnext<CR>
 " Reset search highlight
 nnoremap <CR> :noh<CR><CR>
 
-" Lightline buffer navigation
-nmap <Leader>1 <Plug>lightline#bufferline#go(1)
-nmap <Leader>2 <Plug>lightline#bufferline#go(2)
-nmap <Leader>3 <Plug>lightline#bufferline#go(3)
-nmap <Leader>4 <Plug>lightline#bufferline#go(4)
-nmap <Leader>5 <Plug>lightline#bufferline#go(5)
-nmap <Leader>6 <Plug>lightline#bufferline#go(6)
-nmap <Leader>7 <Plug>lightline#bufferline#go(7)
-nmap <Leader>8 <Plug>lightline#bufferline#go(8)
-nmap <Leader>9 <Plug>lightline#bufferline#go(9)
-nmap <Leader>0 <Plug>lightline#bufferline#go(10)
-
 source ~/.config/nvim/fzf_config.vim
 source ~/.config/nvim/nerd_config.vim
 source ~/.config/nvim/tree_sitter.vim
+source ~/.config/nvim/misc_lua_config.vim
