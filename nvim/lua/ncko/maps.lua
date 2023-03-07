@@ -40,5 +40,5 @@ keymapset('n', 'gf', '<cmd>Lspsaga lsp_finder<CR>')
 keymapset('n', 'gr', '<cmd>Lspsaga rename<CR>')
 keymapset('n', 'gR', '<cmd>Lspsaga rename ++project<CR>')
 keymapset('n', 'gd', '<cmd>Lspsaga peek_definition<CR>')
-
+keymapset('n', '<space>', '<cmd>Lspsaga show_line_diagnostics<CR>')
 

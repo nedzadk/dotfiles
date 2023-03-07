@@ -20,3 +20,35 @@ vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 
+vim.diagnostic.config({
+  underline = true,
+  virtual_text = false,
+  signs = true,
+  update_in_insert = true,
+  float = {
+    source = 'always',
+    border = 'rounded',
+  },
+})
+
+vim.fn.sign_define(
+  'DiagnosticSignError',
+  { text = '', texthl = 'LspDiagnosticsDefaultError' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignWarn',
+  { text = '', texthl = 'LspDiagnosticsDefaultWarning' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignInfo',
+  { text = '', texthl = 'LspDiagnosticsDefaultInformation' }
+)
+
+vim.fn.sign_define(
+  'DiagnosticSignHint',
+  { text = '', texthl = 'LspDiagnosticsDefaultHint' }
+)
+
+

@@ -34,7 +34,7 @@ require('lazy').setup({
   },
   {
     'nvim-lualine/lualine.nvim',
-    config = function() 
+    config = function()
       require('lualine').setup {}
     end
   },
@@ -110,11 +110,12 @@ require('lazy').setup({
   },
   {
     'glepnir/lspsaga.nvim',
+    event = 'BufRead',
     config = function()
-      require('lspsaga').setup {}
+      require('lspsaga').setup({
+      })
     end,
     dependencies = {
-      'nvim-treesitter/nvim-treesitter',
       'kyazdani42/nvim-web-devicons',
     },
   },
