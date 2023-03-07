@@ -42,3 +42,4 @@ keymapset('n', 'gR', '<cmd>Lspsaga rename ++project<CR>')
 keymapset('n', 'gd', '<cmd>Lspsaga peek_definition<CR>')
 keymapset('n', '<space>', '<cmd>Lspsaga show_line_diagnostics<CR>')
 
+keymap('n', '<C-w>', ':bd!<CR>', {noremap = true})
