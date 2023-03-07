@@ -48,7 +48,7 @@ require('lazy').setup({
     'nvim-treesitter/nvim-treesitter',
     config = function()
       require('nvim-treesitter.configs').setup {
-        ensure_installed = { "typescript", "lua", "json", "html", "css" },
+        -- ensure_installed = { "typescript", "lua", "json", "html", "css" },
         highlight = {
           enable = true,
         },
@@ -73,10 +73,27 @@ require('lazy').setup({
     end
   },
   {
+    'nvim-telescope/telescope-file-browser.nvim',
+    dependencies = {
+      'nvim-telescope/telescope.nvim',
+      'nvim-lua/plenary.nvim',
+    },
+  },
+  {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-lua/popup.nvim',
     },
+    config = function()
+      require('telescope').setup {
+        extensions = {
+          file_browser = {
+            hijack_netrw = true,
+          }
+        }
+      }
+      require('telescope').load_extension('file_browser')
+    end
   }
 })

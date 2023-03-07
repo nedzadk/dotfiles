@@ -1,3 +1,4 @@
+vim.g.mapleader = ' '
 vim.o.conceallevel = 0
 vim.o.cmdheight = 3
 vim.o.pumheight = 10
