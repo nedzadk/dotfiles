@@ -11,6 +11,18 @@ if not vim.loop.fs_stat(lazypath) then
 end
 vim.opt.rtp:prepend(lazypath)
 
+local lsp_servers = {
+  tsserver = {},
+  jsonls = {},
+  cssls = {},
+  html = {},
+  lua_ls = {},
+}
+
+local null_servers = {
+  'prettierd'
+}
+
 require('lazy').setup({
   'kyazdani42/nvim-web-devicons',
   {
@@ -32,20 +44,44 @@ require('lazy').setup({
       require('bufferline').setup {}
     end
   },
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = {
+      'kyazdani42/nvim-web-devicons',
+      'nvim-lua/plenary.nvim',
+      'MunifTanjim/nui.nvim',
+    },
+  },
   'github/copilot.vim',
   {
     'williamboman/mason.nvim',
-    'williamboman/mason-lspconfig',
-    'neovim/nvim-lspconfig',
+    dependencies = {
+      'williamboman/mason-lspconfig',
+      'neovim/nvim-lspconfig',
+      'jose-elias-alvarez/null-ls.nvim',
+      'jay-babu/mason-null-ls.nvim',
+    },
     config = function()
-      require('mason').setup {}
-      require('mason-lspconfig').setup {}
-      require('lspconfig').lua_ls.setup {}
-      require('lspconfig').tsserver.setup {}
+      require('mason').setup()
+      require('mason-lspconfig').setup({
+        ensure_installed = lsp_servers,
+        automatic_installation = true,
+      })
+      require('mason-null-ls').setup({
+        ensure_installed = null_servers,
+        automatic_installation = true,
+        automatic_setup = true,
+      })
+      require('null-ls').setup();
+      require('mason-null-ls').setup_handlers()
+      for lsp, settings in pairs(lsp_servers) do
+        require('lspconfig')[lsp].setup(settings)
+      end
     end
   },
   {
     'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
     config = function()
       require('nvim-treesitter.configs').setup {
         -- ensure_installed = { "typescript", "lua", "json", "html", "css" },
@@ -73,6 +109,16 @@ require('lazy').setup({
     end
   },
   {
+    'glepnir/lspsaga.nvim',
+    config = function()
+      require('lspsaga').setup {}
+    end,
+    dependencies = {
+      'nvim-treesitter/nvim-treesitter',
+      'kyazdani42/nvim-web-devicons',
+    },
+  },
+  {
     'nvim-telescope/telescope-file-browser.nvim',
     dependencies = {
       'nvim-telescope/telescope.nvim',
@@ -88,6 +134,7 @@ require('lazy').setup({
     config = function()
       require('telescope').setup {
         extensions = {
+          theme = 'dropdown',
           file_browser = {
             hijack_netrw = true,
           }
