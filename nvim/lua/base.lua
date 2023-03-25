@@ -23,13 +23,8 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.backup = false
 
-vim.o.completeopt = "menuone,noinsert,noselect"
+vim.opt.completeopt = {'menu', 'menuone', 'noselect'}
 vim.o.wildmode = "longest,full"
 
 vim.opt.swapfile = false
 
-vim.diagnostic.config {
-	virtual_text = false,
-	underine = false,
-	signs = true
-}

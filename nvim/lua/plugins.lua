@@ -5,11 +5,23 @@ require('lazy').setup {
     dependencies = {
       'williamboman/mason-lspconfig.nvim',
       'neovim/nvim-lspconfig',
+      'hrsh7th/nvim-cmp',
+      'hrsh7th/cmp-nvim-lsp',
     },
     config = function()
       require('plugins.lsp')
     end,
   },
+  -- Trouble install / configuration
+  {
+    'folke/trouble.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('plugins.trouble')
+    end,
+  },
+  -- Github Copilot install / configuration
+  'github/copilot.vim',
   -- Lualine install / configuration
   {
     'nvim-lualine/lualine.nvim',
