@@ -1,4 +1,3 @@
-require('ncko/base')
-require('ncko/plugins')
-require('ncko/maps')
-
+require('base')
+require('setup')
+require('plugins')
