@@ -28,3 +28,4 @@ vim.o.wildmode = "longest,full"
 
 vim.opt.swapfile = false
 
+vim.keymap.set('n', '<C-w>', ':bd!<CR>', {})

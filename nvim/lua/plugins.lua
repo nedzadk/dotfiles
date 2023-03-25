@@ -39,11 +39,12 @@ require('lazy').setup {
     end,
   },
   -- Telescope install / configuration
-  { 
-    'nvim-telescope/telescope.nvim', tag = '0.1.1',
-    dependencies = { 
+  {
+    'nvim-telescope/telescope.nvim',
+    tag = '0.1.1',
+    dependencies = {
       'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope-file-browser.nvim' 
+      'nvim-telescope/telescope-file-browser.nvim'
     },
     config = function()
       require('plugins.telescope')
@@ -51,11 +52,24 @@ require('lazy').setup {
   },
   -- Treesitter install  / configuration
   {
-    'nvim-treesitter/nvim-treesitter', 
+    'nvim-treesitter/nvim-treesitter',
     cmd = 'TSUpdate',
     config = function()
       require('plugins.treesitter')
     end,
+  },
+  -- LSP Saga
+  {
+    "glepnir/lspsaga.nvim",
+    event = "BufRead",
+    config = function()
+      require("lspsaga").setup({})
+    end,
+    dependencies = {
+      { "nvim-tree/nvim-web-devicons" },
+      --Please make sure you install markdown and markdown_inline parser
+      { "nvim-treesitter/nvim-treesitter" }
+    }
   },
   -- Theme install / configuration
   {
