@@ -1,7 +1,7 @@
 vim.g.mapleader = ' '
 vim.o.conceallevel = 0
 vim.o.cmdheight = 2
-vim.o.pumheight = 10 
+vim.o.pumheight = 10
 vim.o.showmode = true
 vim.o.showtabline = 2
 vim.o.title = true
