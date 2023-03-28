@@ -72,9 +72,10 @@ require('lazy').setup {
   },
   -- Theme install / configuration
   {
-    'rebelot/kanagawa.nvim',
+    'sainnhe/everforest',
     config = function()
-      vim.cmd.colorscheme 'kanagawa'
+      vim.g.everforest_background = 'hard'
+      vim.cmd.colorscheme 'everforest'
     end,
   }
 }
