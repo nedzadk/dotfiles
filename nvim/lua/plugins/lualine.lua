@@ -1,5 +1,3 @@
-require('lualine').setup {
-  options = {
-    theme = 'everforest',
-  }
+return {
+  "nvim-lualine/lualine.nvim"
 }
