@@ -23,5 +23,11 @@ require('lazy').setup {
     opts = {}
   },
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build' },
-  { 'vim-test/vim-test' }
+  { 'vim-test/vim-test' },
+  -- copilot
+  { 'github/copilot.vim' },
+  {
+    'nvim-lualine/lualine.nvim',
+    dependencies = { 'nvim-tree/nvim-web-devicons' }
+  }
 }
