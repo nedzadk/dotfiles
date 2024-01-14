@@ -29,5 +29,6 @@ require('lazy').setup {
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
-  }
+  },
+  { 'tpope/vim-rails' }
 }
