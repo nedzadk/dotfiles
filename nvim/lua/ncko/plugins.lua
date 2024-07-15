@@ -24,5 +24,13 @@ require("lazy").setup({
   {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
+  },
+  {
+    'simonmclean/triptych.nvim',
+    event = 'VeryLazy',
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'nvim-tree/nvim-web-devicons', -- optional
+    }
   }
 })
