@@ -25,6 +25,7 @@ require("lazy").setup({
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
+  -- Ranger like file manager
   {
     'simonmclean/triptych.nvim',
     event = 'VeryLazy',
