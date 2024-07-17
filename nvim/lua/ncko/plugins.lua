@@ -22,6 +22,10 @@ require("lazy").setup({
   {'hrsh7th/nvim-cmp'},
   {'L3MON4D3/LuaSnip'},
   {
+    'nvim-treesitter/nvim-treesitter',
+      cmd = 'TSUpdate',
+  },
+  {
     'nvim-lualine/lualine.nvim',
     dependencies = { 'nvim-tree/nvim-web-devicons' }
   },
