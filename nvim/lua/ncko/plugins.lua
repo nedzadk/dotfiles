@@ -42,6 +42,18 @@ require("lazy").setup({
   {
     'echasnovski/mini.animate'
   },
+  -- Mini git
+  {
+    'echasnovski/mini-git'
+  },
+  -- Mini starter
+  {
+    'echasnovski/mini.starter'
+  },
+  -- Mini extra
+  {
+    'echasnovski/mini.extra'
+  },
   -- Buffer line
   {
     "akinsho/bufferline.nvim",
@@ -55,19 +67,6 @@ require("lazy").setup({
         -- separator_style = "slant",
         show_buffer_close_icons = false,
         show_close_icon = false,
-      },
-    },
-  },
-  -- Git config
-  {
-    "dinhhuy258/git.nvim",
-    event = "BufReadPre",
-    opts = {
-      keymaps = {
-        -- Open blame window
-        blame = "<Leader>gb",
-        -- Open file/folder in git repository
-        browse = "<Leader>go",
       },
     },
   },
