@@ -1,0 +1,16 @@
+[font]
+size=16.0
+
+[font.normal]
+family="GohuFont Nerd Font"
+
+[window]
+decorations="Buttonless"
+padding={x=10, y=10}
+startup_mode="Maximized"
+
+[selection]
+save_to_clipboard=true
+
+[cursor]
+style="Block"
